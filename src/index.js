@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 
 import './index.css';
-import App from './containers/App/index';
 import routes from './routes'
 import registerServiceWorker from './registerServiceWorker';
 import { createStore } from 'redux';

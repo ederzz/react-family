@@ -28,6 +28,7 @@ export class Sider extends React.Component {
     }
     render() {
         const { AppReducer } = this.props;
+        console.log(AppReducer.toJS());
 
         return (
             <div>
