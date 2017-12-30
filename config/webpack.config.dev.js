@@ -98,9 +98,6 @@ module.exports = {
       new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
     ],
   },
-  eslint: {
-    configFile: '../.eslintrc'
-  },
   module: {
     strictExportPresence: true,
     rules: [
@@ -116,7 +113,8 @@ module.exports = {
         use: [
           {
             options: {
-              configFile: path.join(__dirname, '../.eslintrc'),
+              formatter: eslintFormatter,
+              eslintPath: require.resolve('eslint'),
               useEslintrc: true
             },
             loader: require.resolve('eslint-loader'),

@@ -1,33 +1,8 @@
 {
-    "parser": "babel-eslint",
-    "env": {
-      "browser": true, 
-      "node": true,
-      "jest": true
-    },
+    "extends": ["react-app", "plugin:jsx-a11y/recommended"],
+    "plugins": ["jsx-a11y"],
     "rules": {
-      "react/jsx-filename-extension": [
-        1,
-        { 
-          "extensions": [
-            ".js",
-            ".jsx"
-          ]
-        }
-      ],
-      "linebreak-style": "off", 
-      "react/prop-types": 2, 
-      "no-underscore-dangle": 0,
-      "react/prefer-stateless-function": 0, 
-      "jsx-a11y/anchor-is-valid": [ "error", {
-        "components": [ "Link" ],
-        "specialLink": [ "to" ]
-      }], 
-      "react/no-array-index-key": 0,
-      "no-unused-vars": 2
-    },
-    "globals": { 
-      "var1": true, 
-      "var2": false 
+        "prop-types": 2,
+        "no-unused-vars": 2
     }
   }
