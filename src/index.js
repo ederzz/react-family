@@ -1,9 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import routes from './routes';
-import registerServiceWorker from './registerServiceWorker';
+import { Provider } from 'react-redux'
 
-ReactDOM.render( 
-	{ routes }, 
-	document.getElementById('root'));
+import './index.css';
+import App from './containers/App/index';
+import routes from './routes'
+import registerServiceWorker from './registerServiceWorker';
+import { createStore } from 'redux';
+import reducer from './reducer'
+
+const reduxDev = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(); // 使用chrome redux工具
+const store = createStore(
+    reducer,
+    reduxDev
+);
+
+ReactDOM.render(
+    <Provider store={store}>
+        { routes }
+    </Provider>
+    , document.getElementById('root'));
 registerServiceWorker();
