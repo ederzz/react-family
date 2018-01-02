@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
-import { Menu, Icon, Button } from 'antd';
+import { Menu, Icon, Button, Switch } from 'antd';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
@@ -13,8 +13,16 @@ export class Sider extends React.Component {
     constructor() {
         super();
         this.state = {
-            collapsed: false
+            collapsed: false,
+            theme: 'dark',
+            current: 1
         }
+    }
+
+    changeTheme = (val) => {
+        this.setState({
+            theme: val ? 'dark' : 'light',
+        });
     }
 
     toggleCollapsed = () => {
@@ -32,10 +40,17 @@ export class Sider extends React.Component {
 
         return (
             <div>
+                <Switch 
+                    checked={this.state.theme === 'dark'}
+                    onChange={this.changeTheme}
+                    checkedChildren="Dark"
+                    unCheckedChildren="Light"
+                    />
                 <Button type="primary" onClick={this.toggleCollapsed} style={{marginBottom: 16}}>
                     <Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} />
                 </Button>
                 <Menu
+                    theme={this.state.theme}
                     onClick={this.handleClick}
                     style={{ width: 256 }}
                     defaultSelectedKeys={['1']}
