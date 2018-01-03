@@ -20,6 +20,13 @@ const template = {
         grid: {
             bottom: '30%'
         },
+        dataZoom: {
+            type: 'slider',
+            show: false,
+            xAxisIndex: [0],
+            start: 1,
+            end: 35
+        },
         legend: {
             right: 10,
             data: ['1990', '2015']

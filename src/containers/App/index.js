@@ -16,6 +16,19 @@ export default class App extends Component {
         this.graph.setOption(template.option);
     }
 
+    onChunkMove = (end) => {
+        this.graph.dispatchAction({
+            type: 'dataZoom',
+            // 可选，dataZoom 组件的 index，多个 dataZoom 组件时有用，默认为 0
+            dataZoomIndex: 0,
+            // 开始位置的百分比，0 - 100
+            start: 0,
+            // 结束位置的百分比，0 - 100
+            end: end,
+            // 开始位置的数值
+        });
+    }
+
     render() {
         return (
             <div className="app">
@@ -28,7 +41,10 @@ export default class App extends Component {
                         } }
                         />
 
-                    <Slider />
+                    <Slider 
+                        chunkMove={ this.onChunkMove }
+                        />
+                        
                 </div>
             </div>
         )
