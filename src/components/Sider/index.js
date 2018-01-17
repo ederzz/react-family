@@ -39,7 +39,7 @@ export class Sider extends React.Component {
         console.log(AppReducer.toJS());
 
         return (
-            <div>
+            <div className="side-bar">
                 <Switch 
                     checked={this.state.theme === 'dark'}
                     onChange={this.changeTheme}
