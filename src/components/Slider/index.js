@@ -58,13 +58,25 @@ export default class Slider extends React.Component {
 
     render() {
         return (
-            <div 
-                ref={ d => { this.slider = d } }
-                className="slider"
-                >
+            <div>
                 <div 
-                    className="slider-chunk" 
-                    ref={ d => { this.chunk = d } }
+                    ref={ d => { this.slider = d } }
+                    className="slider"
+                    >
+                    <div 
+                        className="slider-chunk" 
+                        ref={ d => { this.chunk = d } }
+                        />
+                </div>
+                <input 
+                    type="range"
+                    min="0"
+                    max="10"
+                    step="0.01"
+                    onChange={e => {
+                        console.log(e.target.value, e.target.value / 10);
+                        this.props.chunkMove(e.target.value / 0.1);
+                    }}
                     />
             </div>
         )
