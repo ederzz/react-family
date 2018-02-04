@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
+// import PropTypes from 'prop-types'
 
 import { Menu, Icon, Button, Switch } from 'antd';
 const SubMenu = Menu.SubMenu;
@@ -10,6 +11,10 @@ const mapStateToProps = ({AppReducer}) => ({
 })
 
 export class Sider extends React.Component {
+    static defaultProps = {}
+
+    static propTypes = {}
+
     constructor() {
         super();
         this.state = {
