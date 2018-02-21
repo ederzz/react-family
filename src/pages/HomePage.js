@@ -7,7 +7,7 @@
 
 
 import React from 'react'
-import App from '../components/App.js'
+import App from '../containers/App.js'
 
 export default class HomePage extends React.Component {
 

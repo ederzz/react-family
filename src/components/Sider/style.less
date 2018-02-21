@@ -1,0 +1,48 @@
+@theme-color: rgb(16, 142, 233);
+
+// antd 菜单 开关（折叠、颜色）样式覆盖 
+.ant-switch-checked {
+    background: @theme-color;
+    position: absolute;
+    bottom: 33px;
+    right: 30px;
+}
+
+.ant-btn-primary {
+    background: transparent;
+    color: rgba(0, 0, 0, 0.65);
+    border: none;
+    position: absolute;
+    right: -40px;
+    top: 10px;
+
+    &:hover {
+        color: @theme-color;
+        background: transparent;
+    }
+}
+
+.ant-menu {
+    height: 100%;
+} 
+
+.ant-menu.ant-menu-dark {
+    .ant-menu-item-selected {
+        color: rgb(255, 255, 255);
+        background: @theme-color;
+    }
+} 
+
+.ant-menu-dark {
+    background: rgb(64, 64, 64);
+    
+    .ant-menu-sub {
+        color: rgba(255, 255, 255, 0.67);
+        background: rgb(64, 64, 64);
+    }
+
+    .ant-menu-inline.ant-menu-sub {
+        background: #333;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25) inset;
+    }
+}

@@ -1,10 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux'
-// import PropTypes from 'prop-types'
-
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Menu, Icon, Button, Switch } from 'antd';
+import classnames from 'classnames';
+
+import { menu as allMenu } from '../../constants';
+import './style.less';
 const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
+// const MenuItemGroup = Menu.ItemGroup;
 
 const mapStateToProps = ({AppReducer}) => ({
     AppReducer
@@ -20,7 +23,8 @@ export class Sider extends React.Component {
         this.state = {
             collapsed: false,
             theme: 'dark',
-            current: 1
+            current: 1,
+            mode: 'vertical' 
         }
     }
 
@@ -32,7 +36,8 @@ export class Sider extends React.Component {
 
     toggleCollapsed = () => {
         this.setState({
-            collapsed: !this.state.collapsed
+            collapsed: !this.state.collapsed,
+            mode: this.state.collapsed ? 'inline' : 'vertical'
         });
     }
 
@@ -40,11 +45,11 @@ export class Sider extends React.Component {
         console.log('click ', e);
     }
     render() {
-        const { AppReducer } = this.props;
+        const { AppReducer, className } = this.props;
         console.log(AppReducer.toJS());
 
         return (
-            <div className="side-bar">
+            <div className={classnames("side-bar", className)}>
                 <Switch 
                     checked={this.state.theme === 'dark'}
                     onChange={this.changeTheme}
@@ -60,33 +65,34 @@ export class Sider extends React.Component {
                     style={{ width: 256 }}
                     defaultSelectedKeys={['1']}
                     defaultOpenKeys={['sub1']}
-                    mode="inline"
+                    mode={this.state.mode}
                     inlineCollapsed={this.state.collapsed}
                 >
-                    <SubMenu key="sub1" title={<span><Icon type="mail" /><span>Navigation One</span></span>}>
-                    <MenuItemGroup key="g1" title="Item 1">
-                        <Menu.Item key="1">Option 1</Menu.Item>
-                        <Menu.Item key="2">Option 2</Menu.Item>
-                    </MenuItemGroup>
-                    <MenuItemGroup key="g2" title="Item 2">
-                        <Menu.Item key="3">Option 3</Menu.Item>
-                        <Menu.Item key="4">Option 4</Menu.Item>
-                    </MenuItemGroup>
-                    </SubMenu>
-                    <SubMenu key="sub2" title={<span><Icon type="appstore" /><span>Navigation Two</span></span>}>
-                    <Menu.Item key="5">Option 5</Menu.Item>
-                    <Menu.Item key="6">Option 6</Menu.Item>
-                    <SubMenu key="sub3" title="Submenu">
-                        <Menu.Item key="7">Option 7</Menu.Item>
-                        <Menu.Item key="8">Option 8</Menu.Item>
-                    </SubMenu>
-                    </SubMenu>
-                    <SubMenu key="sub4" title={<span><Icon type="setting" /><span>Navigation Three</span></span>}>
-                    <Menu.Item key="9">Option 9</Menu.Item>
-                    <Menu.Item key="10">Option 10</Menu.Item>
-                    <Menu.Item key="11">Option 11</Menu.Item>
-                    <Menu.Item key="12">Option 12</Menu.Item>
-                    </SubMenu>
+                    {
+                        allMenu.map(menu => {
+                            if(menu.childrens && menu.childrens.length) {
+                                return (
+                                    <SubMenu key={menu.url} title={<span><Icon type={ menu.icon } /><span>{ menu.name }</span></span>}>
+                                        {
+                                            menu.childrens.map(child => (
+                                                <Menu.Item key={child.url}>
+                                                    <Link to={`/${child.url}`}>{ child.name }</Link>
+                                                </Menu.Item>
+                                            ))
+                                        }
+                                    </SubMenu>
+                                )
+                            }
+
+                            return (
+                                <Menu.Item key={menu.url}>
+                                    <Link to={`/${menu.url}`}>
+                                        <Icon type={ menu.icon } /><span>{ menu.name }</span>
+                                    </Link>
+                                </Menu.Item>
+                            )
+                        })
+                    }
                 </Menu>
             </div>
         );
