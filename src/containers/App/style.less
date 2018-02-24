@@ -1,5 +1,10 @@
+body {
+    overflow: auto;
+}
+
 .app {
     display: flex;
+    overflow: hidden;
 
     .chart-demo {
         width: 600px;
@@ -9,10 +14,28 @@
 
     .side-menu {
         position: relative;
-        height: 100%;
+        padding-bottom: 2000px;
+        margin-bottom: -2000px;
     }
     
-    .app-content {
+    .content {
         flex-grow: 1;
+        background-color: rgb(240, 242, 245);
+        border-radius: 2px;
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+            background-color: #fff;
+            padding: 0 24px;
+        }
+
+        .app-content {
+            height: 100%;
+            margin: 24px;
+            margin-bottom: 0;
+        }
     }
 }

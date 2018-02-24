@@ -45,20 +45,17 @@ export class Sider extends React.Component {
         console.log('click ', e);
     }
     render() {
-        const { AppReducer, className } = this.props;
+        const { AppReducer, className, collapsed } = this.props;
         console.log(AppReducer.toJS());
 
         return (
             <div className={classnames("side-bar", className)}>
-                <Switch 
+                {/* <Switch 
                     checked={this.state.theme === 'dark'}
                     onChange={this.changeTheme}
                     checkedChildren="Dark"
                     unCheckedChildren="Light"
-                    />
-                <Button type="primary" onClick={this.toggleCollapsed} style={{marginBottom: 16}}>
-                    <Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} />
-                </Button>
+                    /> */}
                 <Menu
                     theme={this.state.theme}
                     onClick={this.handleClick}
@@ -66,7 +63,7 @@ export class Sider extends React.Component {
                     defaultSelectedKeys={['1']}
                     defaultOpenKeys={['sub1']}
                     mode={this.state.mode}
-                    inlineCollapsed={this.state.collapsed}
+                    inlineCollapsed={collapsed}
                 >
                     {
                         allMenu.map(menu => {
