@@ -32,6 +32,8 @@ a{
     width:200px;
     position:Relative;
     margin:0 auto;
+    display: flex;
+    justify-content: center;
 }
 
 input{
@@ -101,7 +103,7 @@ input{
         
     .back{
         position:absolute;
-        right:-3px;
+        right:80px;
         top:33px;
         -webkit-transform: rotate(-45deg);
         -moz-transform: rotate(-45deg);
@@ -109,18 +111,3 @@ input{
         transition:.2s all ease-in;
     } 
 }
-
-// input:focus + div .front{
-//     opacity:1;
-//     -webkit-transition-delay: .2s; 
-//     -moz-transition-delay: .2s; 
-//     transition-delay: .2s;
-//     -webkit-transform: rotate(45deg);        
-//     -moz-transform: rotate(45deg);        
-//     transform: rotate(45deg);        
-// }
-    
-// input:focus + div .back{
-//     right:24px;
-//     top:13px;
-// }
