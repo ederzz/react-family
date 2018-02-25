@@ -1,7 +1,10 @@
 import { fromJS } from 'immutable'
 
 const INIT_STATE = fromJS({
-    name: 'jzx'
+    name: 'jzx',
+    a: {
+        b: 123
+    }
 });
 
 export default (state = INIT_STATE, action) => {

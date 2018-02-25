@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Menu, Icon, Button, Switch } from 'antd';
+import { Menu, Icon } from 'antd';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 import { menu as allMenu } from '../../constants';
 import './style.less';
@@ -14,39 +15,40 @@ const mapStateToProps = ({AppReducer}) => ({
 })
 
 export class Sider extends React.Component {
-    static defaultProps = {}
+    static defaultProps = {
+        className: null
+    }
 
-    static propTypes = {}
+    static propTypes = {
+        AppReducer: PropTypes.object.isRequired,
+        className: PropTypes.string,
+        collapsed: PropTypes.bool.isRequired
+    }
 
     constructor() {
         super();
         this.state = {
-            collapsed: false,
             theme: 'dark',
             current: 1,
-            mode: 'vertical' 
-        }
+        };
     }
 
+    // 待处理
     changeTheme = (val) => {
         this.setState({
             theme: val ? 'dark' : 'light',
         });
     }
 
-    toggleCollapsed = () => {
-        this.setState({
-            collapsed: !this.state.collapsed,
-            mode: this.state.collapsed ? 'inline' : 'vertical'
-        });
-    }
-
+    // 待处理
     handleClick = (e) => {
         console.log('click ', e);
     }
+
     render() {
         const { AppReducer, className, collapsed } = this.props;
-        console.log(AppReducer.toJS());
+        console.log(AppReducer, AppReducer.getIn(['a']).toJS());
+        
 
         return (
             <div className={classnames("side-bar", className)}>
@@ -62,7 +64,7 @@ export class Sider extends React.Component {
                     style={{ width: 256 }}
                     defaultSelectedKeys={['1']}
                     defaultOpenKeys={['sub1']}
-                    mode={this.state.mode}
+                    mode='inline'
                     inlineCollapsed={collapsed}
                 >
                     {
