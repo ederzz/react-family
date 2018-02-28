@@ -47,7 +47,7 @@ export class Sider extends React.Component {
 
     render() {
         const { AppReducer, className, collapsed } = this.props;
-        console.log(AppReducer, AppReducer.getIn(['a']).toJS());
+        console.log(AppReducer, AppReducer.getIn(['a']).toJS(), AppReducer.getIn(['c']), AppReducer.getIn(['c']).toJS());
         
 
         return (

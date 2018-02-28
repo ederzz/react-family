@@ -8,6 +8,8 @@ import './style.less'
 
 import Home from '../Home';
 import XssFinder from '../XssFinder';
+import LayoutTest from '../LayoutTest';
+import DataView from '../DataView';
 
 export default class App extends Component {
     constructor() {
@@ -50,6 +52,8 @@ export default class App extends Component {
                     <div className="app-content">
                         <Route path='/' component={ Home } exact={true} />
                         <Route path='/xss' component={ XssFinder } exact={true} />
+                        <Route path='/test' component={ LayoutTest } exact={true} />
+                        <Route path='/chart' component={ DataView } exact={true} />
                     </div>
                 </div>
             </div>
