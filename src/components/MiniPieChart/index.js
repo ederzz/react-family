@@ -2,11 +2,11 @@ import React from 'react';
 import echarts from 'echarts';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import './style.less';
 
+import './style.less';
 import { option } from './config';
 
-export default class MiniBarChart extends React.Component{
+export default class MiniPieChart extends React.Component {
     static defaultProps = {
         className: null
     }
@@ -16,7 +16,7 @@ export default class MiniBarChart extends React.Component{
         title: PropTypes.string.isRequired,
         count: PropTypes.number.isRequired,
         footerTitle: PropTypes.string.isRequired,
-        footerCount: PropTypes.number.isRequired
+        footerCount: PropTypes.number.isRequired,
     }
 
     componentDidMount() {
@@ -32,25 +32,23 @@ export default class MiniBarChart extends React.Component{
             footerTitle,
             footerCount
         } = this.props;
-
         return (
-            <div className="bar-chart-container">
+            <div className={classnames("pie-chart-container", className)}>
                 <div className="chart-top">
                     <div className="title">{ title }</div>
                     <div className="total">{ count }</div>
                 </div>
                 <div 
-                    className={classnames("mini-barchart", className)}
-                    ref={d => { this.chartDom = d }}
-                    >
-
-                </div>
+                    className="mini-piechart" 
+                    ref={d => {
+                        this.chartDom = d
+                    }}
+                    />
                 <div className="chart-bot">
                     <span>{ footerTitle }</span>
                     <span>{ footerCount }</span>
                 </div>
             </div>
-            
         );
     }
 }

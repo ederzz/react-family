@@ -16,9 +16,6 @@ const option = {
         {
             type : 'category',
             data : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-            axisTick: {
-                alignWithLabel: true
-            },
             axisLine: {
                 show: false
             },

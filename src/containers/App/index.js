@@ -32,6 +32,7 @@ export default class App extends Component {
     }
 
     render() {
+        /**增加下侧设计栏 将搜索框和图标和列表整合 */
         return (
             <div className="app">
                 <Sider 

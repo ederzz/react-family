@@ -2,13 +2,9 @@ import React from 'react';
 import {
     Row,
     Col,
-    Tooltip,
-    Icon
 } from 'antd';
 import {
-    ChartCard,
     MiniBar,
-    Field
 } from 'ant-design-pro/lib/Charts';
 import './style.less';
 
@@ -31,13 +27,6 @@ const visitData = [
     }
   ];
   
-class A extends React.Component {
-    render() {
-        return (
-            <div>sdsdss</div>
-        );
-    }
-}
 export default class LayoutTest extends React.Component {
 
     render() {

@@ -17,7 +17,7 @@
     "classnames": "^2.2.5",
     "css-loader": "0.28.7",
     "dotenv": "4.0.0",
-    "echarts": "^3.8.5",
+    "echarts": "^4.0.4",
     "eslint": "^4.14.0",
     "eslint-config-react-app": "^2.0.1",
     "eslint-loader": "1.9.0",
