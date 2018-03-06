@@ -5,7 +5,7 @@ import { createStore } from 'redux';
 import './index.css';
 import routes from './routes'
 import registerServiceWorker from './registerServiceWorker';
-import reducer from './reducer'
+import reducer from './reducer';
 
 const reduxDev = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(); // 使用chrome redux工具
 const store = createStore(

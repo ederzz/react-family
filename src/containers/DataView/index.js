@@ -6,6 +6,7 @@ import {
 import MiniBarChart from '../../components/MiniBarChart';
 import MiniLineChart from '../../components/MiniLineChart';
 import MiniPieChart from '../../components/MiniPieChart';
+import MiniGuageChart from '../../components/MiniGuageChart';
 
 /**最后主动注入后台数据进去 */
 export default class DataView extends React.Component {
@@ -38,7 +39,12 @@ export default class DataView extends React.Component {
                         />
                 </Col>
                 <Col xs={24} sm={12} md={8} lg={6} xl={6}>
-                    asa
+                    <MiniGuageChart
+                        title='xss扫描次数'
+                        count={1222}
+                        footerTitle='日平均'
+                        footerCount={1234}
+                        />
                 </Col>
             </Row>
             </div>
