@@ -23,6 +23,8 @@ body {
         background-color: rgb(240, 242, 245);
         border-radius: 2px;
         overflow: auto;
+        display: flex;
+        flex-direction: column;
 
         header {
             display: flex;
@@ -34,9 +36,8 @@ body {
         }
 
         .app-content {
-            height: 100%;
             margin: 24px;
-            margin-bottom: 0;
+            flex: 1;
         }
     }
 }
