@@ -1,0 +1,1 @@
+export const FETCH_ALL_SITE = 'fetch_all_site';
