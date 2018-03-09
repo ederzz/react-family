@@ -27,7 +27,7 @@ export default class Home extends Component {
     render() {
         return (
             <div className="Home">
-                <div 
+                {/* <div 
                     className="chart-demo" 
                     ref={ d => {
                         this.chartDom = d
@@ -36,7 +36,8 @@ export default class Home extends Component {
                 <Slider 
                     className="aaa"
                     chunkMove={ this.onChunkMove }
-                    />
+                    /> */}
+                    欢迎来到xss漏洞检测器
             </div>
         )
     }

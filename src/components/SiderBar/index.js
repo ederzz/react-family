@@ -14,7 +14,7 @@ const mapStateToProps = ({AppReducer}) => ({
     AppReducer
 })
 
-export class Sider extends React.Component {
+export class SiderBar extends React.Component {
     static defaultProps = {
         className: null
     }
@@ -61,7 +61,6 @@ export class Sider extends React.Component {
                 <Menu
                     theme={this.state.theme}
                     onClick={this.handleClick}
-                    style={{ width: 256 }}
                     defaultSelectedKeys={['1']}
                     defaultOpenKeys={['sub1']}
                     mode='inline'
@@ -97,5 +96,4 @@ export class Sider extends React.Component {
         );
     }
 }
-
-export default connect(mapStateToProps, null)(Sider)
+export default connect(mapStateToProps, null)(SiderBar)
