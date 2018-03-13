@@ -10,11 +10,6 @@ const menu = [
         icon: 'search'
     },
     {
-        name: '布局测试',
-        url: 'test',
-        icon: 'key'
-    },
-    {
         name: 'chart',
         url: 'chart',
         icon: 'pie-chart'

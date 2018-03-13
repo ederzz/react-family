@@ -5,6 +5,8 @@ import { Icon } from 'antd';
 
 import './style.less';
 import { statusTS } from './constants';
+import load from './load.svg';
+import done from './done.svg';
 
 export default class SiteBar extends React.Component {
     static defaultProps = {
@@ -16,6 +18,15 @@ export default class SiteBar extends React.Component {
         url: PropTypes.string.isRequired
     }
 
+    constructor() {
+        super();
+        this.state = {
+            loading: true,
+            // request: false
+            request: true
+        };
+    }
+
     render() {
         const {
             className,
@@ -23,19 +34,44 @@ export default class SiteBar extends React.Component {
             status
         } = this.props;
 
+        const {
+            loading,
+            request
+        } = this.state;
+
         return (
-            <div className={classnames('site-bar', className)}>
-                <div className={classnames("site-status", {
+            <div className={classnames("site-bar-container", className)}>
+                <img className={classnames('progress', {
+                        show: request,
+                        hide: !request
+                    })} 
+                    src={ loading ? load : done } 
+                    />
+                <div className={classnames("site-bar", {
                     "safe": status === 'safe',
-                    "danger": status === 'threate',
+                    "danger": status === 'danger',
                     "not-sure": status === 'not-sure' 
-                })}>{ statusTS[status] }</div>
-                <div className="site-url">{ url }</div>
-                <div className="check-bh">
-                    <Icon type="search" />
-                </div>
-                <div className="delete-bh">
-                    <Icon type="close" />
+                })}>
+                    <div 
+                        className="site-status"
+                        title='安全状态'
+                        >{ statusTS[status] }</div>
+                    <div 
+                        className="site-url"
+                        title={ url }
+                        >{ url }</div>
+                    <div 
+                        title='扫描'
+                        className="check-bh"
+                        >
+                        <Icon type="search" />
+                    </div>
+                    <div 
+                        title='删除'
+                        className="delete-bh"
+                        >
+                        <Icon type="close" />
+                    </div>
                 </div>
             </div>
         );

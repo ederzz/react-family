@@ -1,25 +1,73 @@
-.site-bar {
-    display: flex;
-    width: 700px;
-    border: 1px solid red;
-    padding: 5px 0;
-    justify-content: space-around;
-    border-radius: 3px;
+.site-bar-container {
+    position: relative;
+    
+    .progress {
+        width: 35px;
+        height: 35px;
+        position: absolute;
+        top: 3px;
+        left: -40px;
 
-    .safe {
-        color: green;
+        &.hide {
+            display: none;
+        }
     }
 
-    .danger {
-        color: red;
-    }
+    .site-bar {
+        display: flex;
+        width: 700px;
+        padding: 10px 0;
+        border-radius: 3px;
+        background-color: #469564;
 
-    .not-sure {
-        color: yellow;
-    }
+        .site-url {
+            width: 420px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
 
-    .check-bh,
-    .delete-bh {
-        cursor: pointer;
+        &:hover {
+            box-shadow: 0 0 9px 0px #dac9f3;
+        }
+
+        &.safe {
+            border-left: 5px solid #1ada1a;
+
+            .site-status {
+                color: #1ada1a;
+            }
+        }
+
+        &.danger {
+            border-left: 5px solid #f31b1b;
+
+            .site-status {
+                color: #f31b1b;
+            }
+        }
+
+        &.not-sure {
+            border-left: 5px solid #bbbb12;
+
+            .site-status {
+                color: #bbbb12;
+            }
+        }
+
+        .site-status {
+            width: 135px;
+            text-align: center;
+        }
+
+        .check-bh,
+        .delete-bh {
+            width: 60px;
+            text-align: center;
+
+            i {
+                cursor: pointer;
+            }
+        }
     }
 }

@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import echarts from 'echarts'
-import Slider from '../../components/Slider'
-import template from './config/template'
-import './style.less'
+import React, { Component } from 'react';
+import echarts from 'echarts';
+// import Slider from '../../components/Slider';
+import template from './config/template';
+import './style.less';
 
 export default class Home extends Component {
     constructor() {

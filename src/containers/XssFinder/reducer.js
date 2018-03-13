@@ -4,7 +4,20 @@ import {
 import * as at from './actionTypes';
 
 const INIT_STATE = fromJS({
-    sites: []
+    sites: [
+        {
+            url: 'wwww.baidu.com/wangpan',
+            status: 'not-sure'
+        },
+        {
+            url: 'wwww.baidu.com/zhidao',
+            status: 'not-sure'
+        },
+        {
+            url: 'wwww.baidu.com/music',
+            status: 'not-sure'
+        },
+    ]
 }); 
 
 export default (state = INIT_STATE, action) => {

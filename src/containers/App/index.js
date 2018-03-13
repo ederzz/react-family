@@ -14,7 +14,6 @@ import DataView from '../DataView';
 
 const {
     Header,
-    Footer,
     Sider,
     Content
 } = Layout;
@@ -88,7 +87,6 @@ export default class App extends Component {
                         <Content className="app-content">
                             <Route path='/' component={ Home } exact={true} />
                             <Route path='/xss' component={ XssFinder } exact={true} />
-                            <Route path='/test' component={ LayoutTest } exact={true} />
                             <Route path='/chart' component={ DataView } exact={true} />
                         </Content>
                     </Layout>

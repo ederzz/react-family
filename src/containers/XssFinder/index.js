@@ -2,6 +2,8 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Progress } from 'antd';
+import classnames from 'classnames';
 import SiteBar from '../../components/SiteBar';
 import './style.less';
 import * as actions from './actions';
@@ -20,19 +22,53 @@ class XssFinder extends React.Component {
         xssActions: PropTypes.object.isRequired
     }
 
+    constructor() {
+        super();
+        this.state = {
+            loading: false,
+            percent: 0
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        const {
+            sites
+        } = nextProps.xssFinder.toJS();
+        if(sites.length > 0) {
+            clearInterval(this.timer);
+            this.setState({
+                percent: 100,
+                loading: false
+            });
+        }
+        return true;
+    }
+
     handleSearch = e => {
         if(e.keyCode === 13) {
             this.props.xssActions.fetchAllSites();
+            this.setState({
+                loading: true
+            });
+            this.timer = setInterval(() => {
+                let newPercent = Math.floor(this.state.percent + Math.random() * 3 + 1);
+                console.log(newPercent);
+                newPercent = newPercent > 95 ? 95 : newPercent;
+                this.setState({
+                    percent: newPercent
+                });
+            }, 500);
         }
     }
 
     render() {
         const {
-            xssFinder,
-            xssActions
+            xssFinder
         } = this.props;
 
-        console.log(xssFinder.toJS(), xssActions);
+        const {
+            sites
+        } = xssFinder.toJS();
 
         return (
             <section className="xss-container">
@@ -53,11 +89,22 @@ class XssFinder extends React.Component {
                         <span className="back"></span>
                     </div> 
                 </div>
+                <div className={classnames("loading", {
+                    visible: this.state.loading,
+                    hide: !this.state.loading
+                })}>
+                    <Progress percent={this.state.percent} />
+                </div>
                 <div className="site-container">
-                    <SiteBar 
-                        status="safe"
-                        url="www.baidu.com"
-                        />
+                    {
+                        sites.map(site => (
+                            <SiteBar 
+                                key={`${Date.now() * Math.random()}`}
+                                status={site.status}
+                                url={site.url}
+                                />
+                        ))
+                    }
                 </div>
                 
             </section>

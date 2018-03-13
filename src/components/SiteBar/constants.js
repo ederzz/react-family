@@ -1,6 +1,6 @@
 const statusTS = {
     'safe': '安全',
-    'threate': '危险',
+    'danger': '危险',
     'not-sure': '未知'
 }
 
