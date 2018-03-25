@@ -1,9 +1,9 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { Progress } from 'antd';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 import SiteBar from '../../components/SiteBar';
 import './style.less';
 import * as actions from './actions';
@@ -37,9 +37,14 @@ class XssFinder extends React.Component {
         if(sites.length > 0) {
             clearInterval(this.timer);
             this.setState({
-                percent: 100,
-                loading: false
+                percent: 100
             });
+
+            setTimeout(() => {
+                this.setState({
+                    loading: false
+                });
+            }, 2000);
         }
         return true;
     }
@@ -48,11 +53,11 @@ class XssFinder extends React.Component {
         if(e.keyCode === 13) {
             this.props.xssActions.fetchAllSites();
             this.setState({
+                percent: 0,
                 loading: true
             });
             this.timer = setInterval(() => {
                 let newPercent = Math.floor(this.state.percent + Math.random() * 3 + 1);
-                console.log(newPercent);
                 newPercent = newPercent > 95 ? 95 : newPercent;
                 this.setState({
                     percent: newPercent
@@ -63,7 +68,8 @@ class XssFinder extends React.Component {
 
     render() {
         const {
-            xssFinder
+            xssFinder,
+            xssActions
         } = this.props;
 
         const {
@@ -99,14 +105,19 @@ class XssFinder extends React.Component {
                     {
                         sites.map(site => (
                             <SiteBar 
-                                key={`${Date.now() * Math.random()}`}
+                                key={site.id}
                                 status={site.status}
                                 url={site.url}
+                                handleClick={ () => {
+                                    xssActions.updateSiteStatus(site.url, site.id);
+                                } }
                                 />
                         ))
                     }
                 </div>
-                
+                <div className="btn-container">
+                    <button className="build-chart">一键生成可视化图表</button>
+                </div>
             </section>
         )
     }

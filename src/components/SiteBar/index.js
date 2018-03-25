@@ -15,23 +15,35 @@ export default class SiteBar extends React.Component {
 
     static propTypes = {
         className: PropTypes.string,
-        url: PropTypes.string.isRequired
+        url: PropTypes.string.isRequired,
+        handleClick: PropTypes.func.isRequired
     }
 
     constructor() {
         super();
         this.state = {
             loading: true,
-            // request: false
-            request: true
+            request: false
         };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        const {
+            status
+        } = nextProps;
+        if(status !== 'not-sure') {
+            this.setState({
+                loading: false
+            });
+        }
     }
 
     render() {
         const {
             className,
             url,
-            status
+            status,
+            handleClick
         } = this.props;
 
         const {
@@ -63,6 +75,12 @@ export default class SiteBar extends React.Component {
                     <div 
                         title='扫描'
                         className="check-bh"
+                        onClick={() => {
+                            this.setState({
+                                request: true
+                            });
+                            handleClick();
+                        }}
                         >
                         <Icon type="search" />
                     </div>

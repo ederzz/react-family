@@ -1,4 +1,4 @@
-const menu = [
+export const menu = [
     {
         name: '首页',
         url: '',
@@ -16,6 +16,8 @@ const menu = [
     }
 ];
 
-export {
-    menu
-}
+export const SITE_STATUS_MAP = {
+    'safe': '安全',
+    'danger': '危险',
+    'not-sure': '未知'
+};
