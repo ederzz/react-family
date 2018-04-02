@@ -10,12 +10,14 @@ import {
 	Router,
 	Route
 } from 'react-router'
-import HomePage from '../pages/HomePage.js'
+import HomePage from '../pages/HomePage.js';
+import ChartsPage from '../pages/ChartsPage.js';
 
 
 const routes = (
 		<Router>
 			<Route path="/" component={ HomePage } />
+			<Route path="/view" component={ ChartsPage } />
 		</Router>
 	);
 export default routes;
