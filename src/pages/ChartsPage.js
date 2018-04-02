@@ -4,8 +4,11 @@ export default class ChartsPage extends React.Component {
 
     render() {
         return (
-            <div className="charts-page">
-                lalala
+            <div style={{ 
+                color: 'red',
+                fontSize: '40px'
+            }} className="charts-page">
+                lalalaasdasdadadasasdasdasdas
             </div>
         );
     }
