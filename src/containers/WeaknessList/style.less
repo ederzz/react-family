@@ -1,0 +1,45 @@
+@main-color: #fff;
+@sub-color: rgb(218, 215, 215);
+
+.padding-10 {
+    padding: 10px;
+}
+
+.weakness-list {
+    background: rgba(0, 9, 23, .8);
+    width: 300px;
+
+    .list-title {
+        color: @main-color;
+        .padding-10;
+
+        &::before {
+            content: '';
+            display: inline-block;
+            border: 5px solid transparent;
+            border-left-color: @main-color;
+            width: 0;
+            height: 0;
+            margin-right: 7px;
+        }
+    }
+
+    .search {
+        padding: 0 10px;
+
+        .ipt {
+            border: none;
+            outline: none;
+            background: #f9e7e71a;
+            width: 100%;
+            padding: 2px 5px;
+            color: @main-color;
+        }
+    }
+
+    .weakness-list-body {
+        padding-top: 10px;
+        overflow: auto;
+        height: 500px;
+    }
+}

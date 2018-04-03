@@ -6,6 +6,7 @@ import { Route } from 'react-router'
 import App from './containers/App';
 import ChartsPage from './pages/ChartsPage';
 import ScrollTable from './components/ScrollTable';
+import WeaknessList from './containers/WeaknessList';
 
 const routes = (
     <HashRouter>
@@ -13,6 +14,7 @@ const routes = (
             <Route path="/" component={ App } exact={ true } />
             <Route path="/view" component={ ChartsPage } exact={ true } />
             <Route path="/scroll" component={ ScrollTable } exact={ true } />
+            <Route path="/list" component={ WeaknessList } exact={ true } />
         </div>
     </HashRouter>
 );

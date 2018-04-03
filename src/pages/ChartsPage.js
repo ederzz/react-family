@@ -1,9 +1,43 @@
 import React from 'react';
+import WeaknessList from '../containers/WeaknessList';
 import './style.less';
 
 export default class ChartsPage extends React.Component {
 
     render() {
+        const xss = [
+            {
+                url: 'www.baidu.com',
+                count: 3,
+                time: '2017-03-02 14:11:11'
+            },
+            {
+                url: 'www.baidu.com',
+                count: 3,
+                time: '2017-03-02 14:11:11'
+            },
+            {
+                url: 'www.baidu.com',
+                count: 3,
+                time: '2017-03-02 14:11:11'
+            },
+            {
+                url: 'www.baidu.com',
+                count: 3,
+                time: '2017-03-02 14:11:11'
+            },
+            {
+                url: 'www.baidu.com',
+                count: 3,
+                time: '2017-03-02 14:11:11'
+            },
+            {
+                url: 'www.baidu.com',
+                count: 3,
+                time: '2017-03-02 14:11:11'
+            },
+        ];
+
         return (
             <div className="charts-page">
                 <header className="header-bar">
@@ -16,7 +50,9 @@ export default class ChartsPage extends React.Component {
                     </div>
                 </header>
                 <section className="chart-wrapper">
-                    <div className="mid-list">事件列表</div>
+                    <div className="mid-list">
+                        <WeaknessList xss={ xss } />
+                    </div>
                     <div className="mid-chart">charts</div>
                 </section>
                 <section className="footer-list-wrapper">
