@@ -1,12 +1,13 @@
 @main-color: #fff;
 @sub-color: rgb(218, 215, 215);
+@container-color: #1a1e23;
 
 .padding-10 {
     padding: 10px;
 }
 
 .weakness-list {
-    background: rgba(0, 9, 23, .8);
+    background: @container-color;
     width: 300px;
 
     .list-title {
@@ -38,8 +39,29 @@
     }
 
     .weakness-list-body {
-        padding-top: 10px;
+        margin-top: 10px;
         overflow: auto;
         height: 500px;
+
+        &::-webkit-scrollbar {
+			width: 2px;
+			height: 0px;
+        }
+
+        &::-webkit-scrollbar-button {
+                display: none;
+        }
+
+        &::-webkit-scrollbar-track {
+                display: none;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #f9e7e71a;
+            border-radius: 2px;
+        }
+
     }
+
+    
 }
