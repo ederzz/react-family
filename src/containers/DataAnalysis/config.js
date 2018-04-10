@@ -62,6 +62,9 @@ export const option = {
                 lineStyle: {
                     color: 'rgba(255, 255, 255, .7)'
                 }
+            },
+            splitLine: {
+                show: false
             }
         }
     ],
