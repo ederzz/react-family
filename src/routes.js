@@ -12,10 +12,10 @@ import DataAnalysis from './containers/DataAnalysis';
 const routes = (
     <HashRouter>
         <Switch className="main">
-            <Route path="/" component={ App } exact />
             <Route path="/view" component={ ChartsPage } exact />
             <Route path="/scroll" component={ ScrollTable } exact />
             <Route path="/analysis" component={ DataAnalysis } exact />
+            <Route path="/" component={ App } />
         </Switch>
     </HashRouter>
 );

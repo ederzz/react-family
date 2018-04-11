@@ -51,7 +51,7 @@ class XssFinder extends React.Component {
 
     handleSearch = e => {
         if(e.keyCode === 13) {
-            this.props.xssActions.fetchAllSites();
+            this.props.xssActions.fetchAllSites(e.target.value);
             this.setState({
                 percent: 0,
                 loading: true
@@ -116,7 +116,7 @@ class XssFinder extends React.Component {
                     }
                 </div>
                 <div className="btn-container">
-                    <button className="build-chart">一键生成可视化图表</button>
+                    <button className="build-chart">Generate Chart</button>
                 </div>
             </section>
         )

@@ -1,9 +1,11 @@
 import axios from 'axios';
 import * as at from './actionTypes';
 
-export const fetchAllSites = () => async dispatch => {
+export const fetchAllSites = url => async dispatch => {
     try {
-        const res = await axios.get('http://localhost:3003/pupp');
+        const res = await axios.post('http://localhost:3003/getLinks', {
+            requestUrl: url
+        });
 
         dispatch({
             type: at.FETCH_ALL_SITE,
@@ -16,10 +18,8 @@ export const fetchAllSites = () => async dispatch => {
 
 export const updateSiteStatus = (url, id) => async dispatch => {
     try {
-        const res = await axios.get('http://localhost:3003/xssTest', {
-            params: {
-                url
-            }
+        const res = await axios.post('http://localhost:3003/xssTest', {
+            url
         });
 
         dispatch({
