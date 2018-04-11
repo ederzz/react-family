@@ -8,6 +8,7 @@ import ChartsPage from './pages/ChartsPage';
 import ScrollTable from './components/ScrollTable';
 import WeaknessList from './containers/WeaknessList';
 import DataAnalysis from './containers/DataAnalysis';
+import EventFacts from './components/EventFacts';
 
 const routes = (
     <HashRouter>
@@ -15,6 +16,7 @@ const routes = (
             <Route path="/view" component={ ChartsPage } exact />
             <Route path="/scroll" component={ ScrollTable } exact />
             <Route path="/analysis" component={ DataAnalysis } exact />
+            <Route path="/event" component={ EventFacts } exact />
             <Route path="/" component={ App } />
         </Switch>
     </HashRouter>
