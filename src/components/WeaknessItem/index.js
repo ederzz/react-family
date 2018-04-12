@@ -21,7 +21,10 @@ export default class WeaknessItem extends React.Component {
 
         return (
             <div className="weakness-item">
-                <div className="url">{ url }</div>
+                <div
+                    title={url} 
+                    className="url"
+                    >{ url }</div>
                 <div className="count">xss漏洞个数 { count } 个</div>
                 <div className="time">{ time }</div>
             </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import WeaknessItem from '../../components/WeaknessItem';
-import './style.less';
+import './style.less'; 
 
 export default class WeaknessList extends React.Component {
 
@@ -11,7 +11,7 @@ export default class WeaknessList extends React.Component {
     }
 
     static propTypes = {
-        xss: PropTypes.array.isReuired,
+        xss: PropTypes.array.isRequired,
         className: PropTypes.string
     }
 

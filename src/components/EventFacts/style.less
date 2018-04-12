@@ -1,10 +1,25 @@
+@import '../../common/common.less';
+
 .event-facts {
-    width: 300px;
+    width: 380px;
     height: 200px;
-    background: #bbb;
+    background: @chunk-color;
+    .padding;
 
     .fact-title,
     .fact-sub-title {
-        color: #fff;
+        color: @title-color;
+    }
+
+    .fact-sub-title {
+        padding: 6px 0;
+    }
+
+    .fact-title::before {
+        .triangle;
+    }
+
+    .facts-content {
+        color: @content-color;
     }
 }
