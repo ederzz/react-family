@@ -1,27 +1,19 @@
-@main-color: #fff;
-@sub-color: rgb(218, 215, 215);
-@container-color: rgba(35, 36, 37, .4);
+@import '../../common/common.less';
 
 .padding-10 {
     padding: 10px;
 }
 
 .weakness-list {
-    background: @container-color;
+    background: @chunk-color;
     width: 300px;
 
     .list-title {
-        color: @main-color;
+        color: @title-color;
         .padding-10;
 
         &::before {
-            content: '';
-            display: inline-block;
-            border: 5px solid transparent;
-            border-left-color: @main-color;
-            width: 0;
-            height: 0;
-            margin-right: 7px;
+            .triangle;
         }
     }
 
@@ -34,7 +26,7 @@
             background: #f9e7e71a;
             width: 100%;
             padding: 2px 5px;
-            color: @main-color;
+            color: @title-color;
         }
     }
 
