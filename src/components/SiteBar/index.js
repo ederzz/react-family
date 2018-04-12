@@ -5,8 +5,8 @@ import { Icon } from 'antd';
 
 import './style.less';
 import { statusTS } from './constants';
-import load from './load.svg';
-import done from './done.svg';
+import load from '../../static/load.svg';
+import done from '../../static/done.svg';
 
 export default class SiteBar extends React.Component {
     static defaultProps = {

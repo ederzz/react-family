@@ -4,12 +4,14 @@ import {
     Icon,
     Layout
 } from 'antd';
+import classnames from 'classnames';
 import SiderBar from '../../components/SiderBar';
 import './style.less'
 
 import Home from '../Home';
 import XssFinder from '../XssFinder';
 import DataView from '../DataView';
+import iconSrc from '../../static/dun.svg';
 
 const {
     Header,
@@ -48,24 +50,12 @@ export default class App extends Component {
 
                 <Layout>
                     <Sider collapsed={collapsed}>
-                        <Icon 
-                            type="safety" 
-                            // style={
-                            //     collapsed ?
-                            //     {
-                            //         fontSize: 16,
-                            //         color: 'rgba(255, 255, 255, 0.65)'
-                            //     } :
-                            //     {
-                            //         fontSize: 66,
-                            //         color: 'rgba(255, 255, 255, 0.65)'
-                            //     }
-                            // }
-                            className={{
+                        <img
+                            className={classnames('xss-icon', {
                                 "sys-icon-collapsed" : collapsed,
                                 "sys-icon-uncollapsed": !collapsed
-                            }}
-                            />
+                            })} 
+                            src={iconSrc} />
                         <SiderBar 
                             className="side-menu"
                             collapsed={this.state.collapsed}

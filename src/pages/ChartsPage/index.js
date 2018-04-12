@@ -9,6 +9,11 @@ import './style.less';
 
 export default class ChartsPage extends React.Component {
 
+    componentWillMount() {
+        console.log(this.props.location, this.props.history);
+        
+    }
+
     render() {
         return (
             <div className="charts-page">
