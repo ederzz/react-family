@@ -47,8 +47,6 @@ export class SiderBar extends React.Component {
 
     render() {
         const { AppReducer, className, collapsed } = this.props;
-        console.log(AppReducer, AppReducer.getIn(['a']).toJS(), AppReducer.getIn(['c']), AppReducer.getIn(['c']).toJS());
-        
 
         return (
             <div className={classnames("side-bar", className)}>

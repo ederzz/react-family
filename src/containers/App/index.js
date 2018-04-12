@@ -9,7 +9,6 @@ import './style.less'
 
 import Home from '../Home';
 import XssFinder from '../XssFinder';
-import LayoutTest from '../LayoutTest';
 import DataView from '../DataView';
 
 const {
