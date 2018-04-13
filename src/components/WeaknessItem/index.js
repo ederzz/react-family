@@ -1,26 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import './style.less';
 
 export default class WeaknessItem extends React.Component {
 
-    static defaultProps = {}
+    static defaultProps = {
+        className: null
+    }
 
     static propTypes = {
         url: PropTypes.string.isRequired,
         count: PropTypes.number.isRequired,
-        time: PropTypes.string.isRequired
+        time: PropTypes.string.isRequired,
+        className: PropTypes.string
     }
 
     render() {
         const {
             url,
             count,
-            time
+            time,
+            className
         } = this.props;
 
         return (
-            <div className="weakness-item">
+            <div className={classnames("weakness-item", className)}>
                 <div
                     title={url} 
                     className="url"

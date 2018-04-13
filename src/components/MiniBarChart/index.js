@@ -8,7 +8,7 @@ import { option } from './config';
 
 export default class MiniBarChart extends React.Component{
     static defaultProps = {
-        className: null
+        className: ''
     }
 
     static propTypes = {
@@ -34,7 +34,7 @@ export default class MiniBarChart extends React.Component{
         } = this.props;
 
         return (
-            <div className="bar-chart-container">
+            <div className={classnames("bar-chart-container", className)}>
                 <div className="chart-top">
                     <div className="title">{ title }</div>
                     <div className="total">{ count }</div>
