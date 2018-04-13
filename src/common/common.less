@@ -5,6 +5,19 @@
 @danger-color: #e72828;
 @content-color: #908c8c;
 
+@keyframes iconRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/** 旋转动画 */
+.rotate {
+    animation: iconRotate 5s linear infinite;
+}
 
 .triangle {
     content: '';

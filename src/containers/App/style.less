@@ -1,13 +1,6 @@
 @import '../../common/common.less';
 @content-color: rgba(226, 247, 241, .2);
-@keyframes iconRotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
+
 
 body {
     overflow: auto;
@@ -23,7 +16,7 @@ body {
     }
 
     .xss-icon {
-        animation: iconRotate 5s linear infinite;
+        .rotate;
     }
 
     .sys-icon-collapsed {

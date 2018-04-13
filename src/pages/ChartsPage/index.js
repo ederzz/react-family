@@ -1,9 +1,11 @@
 import React from 'react';
 import WeaknessList from '../../containers/WeaknessList';
 import EventFacts from '../../components/EventFacts';
+import VisualHeader from '../../components/VisualHeader';
 import {
     eventFacts,
-    weakness
+    weakness,
+    header
 } from './config';
 import './style.less';
 
@@ -17,15 +19,10 @@ export default class ChartsPage extends React.Component {
     render() {
         return (
             <div className="charts-page">
-                <header className="header-bar">
-                    <div className="header-title">
-                        <span className="title">XSS漏洞检测器</span>
-                        <span className="sub-title">可视化平台</span>
-                    </div>
-                    <div className="header-time">
-                        2015-03-12
-                    </div>
-                </header>
+                <VisualHeader 
+                    title={header.title}
+                    subTitle={header.subTitle}
+                    />
                 <section className="chart-wrapper">
                     <div className="mid-list">
                         <WeaknessList xss={ weakness } />

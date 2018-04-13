@@ -27,7 +27,7 @@ export default class EventFacts extends React.Component {
         } = this.props;
 
         return (
-            <div className={className("event-facts", className)}>
+            <div className={classnames("event-facts", className)}>
                 <div className="fact-title">{ title }</div>
                 <div className="fact-sub-title">{ subTitle }</div>
                 <section className="facts-content">

@@ -1,0 +1,51 @@
+@import '../../common/common.less';
+
+.header-bar {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    border: 1px solid red;
+
+    .header-title {
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 20px;
+        display: flex;
+        align-items: center;
+
+        .visual-icon {
+            width: 30px;
+            .rotate;
+        }
+
+        .title,
+        .sub-title {
+            height: 20px;
+            display: inline-block;
+        }
+
+        .title {
+            padding-right: 10px;                
+        }
+
+        .sub-title {
+            font-weight: 100;
+            padding-left: 10px;
+        }
+    }
+
+    .header-time {
+        display: flex;
+        align-items: flex-end;
+        padding-bottom: 4px;
+
+        .time {
+            font-size: 20px;
+        }
+
+        .date {
+            margin: 0 10px 0 10px;
+            font-size: 16px;
+        }
+    }
+}
