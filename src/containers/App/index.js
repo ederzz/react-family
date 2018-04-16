@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { 
+    Route,
+    Link
+ } from 'react-router-dom';
 import {
     Icon,
     Layout
@@ -68,9 +71,8 @@ export default class App extends Component {
                                 onClick={this.toggle}
                                 style={{ lineHeight: '64px' }}
                                 />
-                            <div className="user">
-                            <Icon type='user' />
-                                <span>神以灵</span>
+                            <div className="entry">
+                                <Link to="/view">Visual Platform</Link>
                             </div>
                         </Header>
                         <Content className="app-content">
