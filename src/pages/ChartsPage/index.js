@@ -20,6 +20,7 @@ export default class ChartsPage extends React.Component {
         return (
             <div className="charts-page">
                 <VisualHeader 
+                    className="chart-header"
                     title={header.title}
                     subTitle={header.subTitle}
                     />
