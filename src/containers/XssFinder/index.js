@@ -30,6 +30,10 @@ class XssFinder extends React.Component {
         }
     }
 
+    /**
+     * TODO
+     * 将进度条的控制状态放入redux中 
+     */
     componentWillReceiveProps(nextProps) {
         const {
             sites
