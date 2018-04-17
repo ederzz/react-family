@@ -2,6 +2,7 @@ import React from 'react';
 import WeaknessList from '../../containers/WeaknessList';
 import EventFacts from '../../components/EventFacts';
 import VisualHeader from '../../components/VisualHeader';
+import LevelPieChart from '../../components/LevelPieChart';
 import {
     eventFacts,
     weakness,
@@ -38,7 +39,12 @@ export default class ChartsPage extends React.Component {
                             facts={eventFacts.facts}
                             />
                     </div>
-                    <div className="second-list footer-list">列表2</div>
+                    <div className="second-list footer-list">
+                        <LevelPieChart 
+                            className='level-chart'
+                            title='威胁等级分布'
+                            />
+                    </div>
                     <div className="third-list footer-list">列表3</div>
                     <div className="fourth-list footer-list">列表4</div>
                 </section>

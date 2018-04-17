@@ -22,8 +22,8 @@ export default class VisualHeader extends React.Component {
     constructor() {
         super();
         this.state = {
-            date: '--:--:--',
-            time: '--:--:--'
+            date: moment().format('YYYY:MM:DD'),
+            time: moment().format('HH:mm:ss')
         }
     }
 

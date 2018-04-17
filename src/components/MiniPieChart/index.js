@@ -33,7 +33,7 @@ export default class MiniPieChart extends React.Component {
             footerCount
         } = this.props;
         return (
-            <div className={classnames("pie-chart-container", className)}>
+            <div className={classnames("mini-pie-chart-container", className)}>
                 <div className="chart-top">
                     <div className="title">{ title }</div>
                     <div className="total">{ count }</div>
