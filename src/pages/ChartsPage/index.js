@@ -3,6 +3,7 @@ import WeaknessList from '../../containers/WeaknessList';
 import EventFacts from '../../components/EventFacts';
 import VisualHeader from '../../components/VisualHeader';
 import LevelPieChart from '../../components/LevelPieChart';
+import XssNumber from '../../components/XssNumber';
 import {
     eventFacts,
     weakness,
@@ -45,7 +46,11 @@ export default class ChartsPage extends React.Component {
                             title='威胁等级分布'
                             />
                     </div>
-                    <div className="third-list footer-list">列表3</div>
+                    <div className="third-list footer-list">
+                        <XssNumber 
+                            className='xss-nubmer-chart'
+                            />
+                    </div>
                     <div className="fourth-list footer-list">列表4</div>
                 </section>
             </div>
