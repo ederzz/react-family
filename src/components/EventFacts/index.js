@@ -8,7 +8,7 @@ export default class EventFacts extends React.Component {
         title: '事件概况',
         subTitle: 'xss漏洞事件',
         facts: 'xss漏洞是一种安全性事件',
-        className: ''
+        className: null
     }
 
     static propTypes = {

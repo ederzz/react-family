@@ -1,8 +1,8 @@
 @import '../../common/common.less';
 
 .event-facts {
-    width: 380px;
-    height: 200px;
+    width: 220px;
+    height: 180px;
     background: @chunk-color;
     .padding;
 
@@ -21,5 +21,8 @@
 
     .facts-content {
         color: @content-color;
+        height: calc(~'100% - 54px');
+        overflow: auto;
+        .scroll-bar;
     }
 }

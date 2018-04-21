@@ -4,6 +4,7 @@ import EventFacts from '../../components/EventFacts';
 import VisualHeader from '../../components/VisualHeader';
 import LevelPieChart from '../../components/LevelPieChart';
 import XssNumber from '../../components/XssNumber';
+import ScrollTable from '../../components/ScrollTable';
 import {
     eventFacts,
     weakness,
@@ -51,7 +52,12 @@ export default class ChartsPage extends React.Component {
                             className='xss-nubmer-chart'
                             />
                     </div>
-                    <div className="fourth-list footer-list">列表4</div>
+                    <div className="fourth-list footer-list">
+                        <ScrollTable 
+                            className='safe-site'
+                            title='安全站点'
+                            />
+                    </div>
                 </section>
             </div>
         );
