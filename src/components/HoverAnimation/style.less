@@ -1,0 +1,42 @@
+@keyframes hoverIndex {
+    0% {
+        transform: perspective(1600px) translateZ(65px);
+    }
+    100% {
+        transform: perspective(1600px) translateZ(0px);
+    }
+}
+
+@keyframes hoverActive {
+    0% {
+        transform: perspective(1600px) rotateX(0) rotateY(0) translateZ(0);
+    }
+    20% {
+        transform: perspective(1600px) rotateX(5deg) rotateY(3deg) translateZ(32px);
+    }
+    100% {
+        transform: perspective(1600px) rotateX(0) rotateY(0) translateZ(65px);
+    }
+}
+
+.hover-animation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .hover-item {
+        width: 600px;
+        height: 100px;
+        background: rgba(0, 0, 0, .7);
+        animation: hoverIndex .3s cubic-bezier(.4, 0, .2, 1) forwards;
+        text-align: center;
+        color: #fff;
+        font-size: 29px;
+        line-height: 100px;
+        margin: 10px 0;
+
+        &:hover {
+            animation: hoverActive .7s cubic-bezier(0.315, 0.605, 0.375, 0.925) forwards;
+        }
+    }
+}

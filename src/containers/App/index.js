@@ -15,6 +15,7 @@ import Home from '../Home';
 import XssFinder from '../XssFinder';
 import DataView from '../DataView';
 import iconSrc from '../../static/dun.svg';
+import HoverAnimation from '../../components/HoverAnimation';
 
 const {
     Header,
@@ -79,6 +80,7 @@ export default class App extends Component {
                             <Route path='/' component={ Home } exact={true} />
                             <Route path='/xss' component={ XssFinder } exact={true} />
                             <Route path='/chart' component={ DataView } exact={true} />
+                            <Route path='/hover' component={ HoverAnimation } exact={true} />
                         </Content>
                     </Layout>
                 </Layout>

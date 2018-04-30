@@ -13,6 +13,17 @@ export const menu = [
         name: 'chart',
         url: 'chart',
         icon: 'pie-chart'
+    },
+    {
+        name: 'taste demos',
+        icon: 'rocket',   // 没有icon
+        childrens: [
+            {
+                name: 'hover animation',
+                url: 'hover',
+                icon: 'search'
+            }
+        ]
     }
 ];
 
