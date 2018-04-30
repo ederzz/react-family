@@ -58,6 +58,10 @@ export default class ChartsPage extends React.Component {
                     </div>
                     <div className="third-list footer-list">
                         <XssNumber 
+                            data={{
+                                axisData: ['site1', 'site1', 'site1', 'site1'],
+                                seriesData: [11, 22, 31, 43]
+                            }}
                             className='xss-nubmer-chart'
                             />
                     </div>

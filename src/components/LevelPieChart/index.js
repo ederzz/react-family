@@ -50,6 +50,14 @@ export default class MiniPieChart extends React.Component {
         this.graph.setOption(this.options);
     }
 
+    componentWillReceiveProps(nextProps) {
+        const { showLegend } = nextProps;
+        
+        this.options.series[0].data = this._generateChartData();
+        this.options.legend.show = showLegend;
+        this.graph.setOption(this.options);
+    }
+
     render() {
         const {
             className,
