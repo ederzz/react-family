@@ -5,6 +5,7 @@ import VisualHeader from '../../components/VisualHeader';
 import LevelPieChart from '../../components/LevelPieChart';
 import XssNumber from '../../components/XssNumber';
 import ScrollTable from '../../components/ScrollTable';
+import LineChart from '../../components/LineChart';
 import {
     eventFacts,
     weakness,
@@ -31,7 +32,15 @@ export default class ChartsPage extends React.Component {
                     <div className="mid-list">
                         <WeaknessList xss={ weakness } />
                     </div>
-                    <div className="mid-chart">charts</div>
+                    <div className="mid-chart">
+                        <LineChart 
+                            className='threate-level'
+                            data={{
+                                axisData: ['site1(www.baidu.com)', 'site1(www.baidu.com)', 'site1(www.baidu.com)', 'site1(www.baidu.com)'],
+                                seriesData: [1, 2, 3, 4]
+                            }}
+                            />
+                    </div>
                 </section>
                 <section className="footer-list-wrapper">
                     <div className="first-list footer-list">
