@@ -48,7 +48,6 @@ export default class App extends Component {
             collapsed
         } = this.state;
 
-        /**增加下侧设计栏 将搜索框和图标和列表整合 */
         return (
             <div className="app">
 
@@ -74,7 +73,7 @@ export default class App extends Component {
                                 style={{ lineHeight: '64px' }}
                                 />
                             <div className="entry">
-                                <Link to="/view">Visual Platform</Link>
+                                <Link to="/view">Xss Platform</Link>
                             </div>
                         </Header>
                         <Content className="app-content">
@@ -85,15 +84,6 @@ export default class App extends Component {
                         </Content>
                     </Layout>
                 </Layout>
-                
-                {/* <div className="content">
-                    <header>
-                        
-                    </header>
-                    <div className="app-content">
-                        
-                    </div>
-                </div> */}
             </div>
         )
     }
