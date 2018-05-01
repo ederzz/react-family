@@ -59,6 +59,7 @@ export default class App extends Component {
                                 "sys-icon-collapsed" : collapsed,
                                 "sys-icon-uncollapsed": !collapsed
                             })} 
+                            alt='icon'
                             src={iconSrc} />
                         <SiderBar 
                             className="side-menu"

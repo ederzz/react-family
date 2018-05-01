@@ -8,7 +8,10 @@ export default class XssHeader extends React.Component {
     render() {
         return (
             <header className='xss-topbar'>
-                <div className='topbar-title'>XSS漏洞检测器</div>
+                <div className='topbar-title'>
+                    <span className="sub-title">INDEX</span>
+                    <span className="title">XSS漏洞检测器</span>
+                </div>
                 <div className='topbar-share'>
                     <div className='anquan'>
                         为了更好地互联网
