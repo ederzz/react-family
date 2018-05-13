@@ -47,8 +47,8 @@ export class SiderBar extends React.Component {
                     /> */}
                 <Menu
                     theme={this.state.theme}
-                    defaultSelectedKeys={['1']}
-                    defaultOpenKeys={['sub1']}
+                    defaultSelectedKeys={['home']}
+                    defaultOpenKeys={['demos']}
                     mode='inline'
                     inlineCollapsed={collapsed}
                 >
@@ -56,10 +56,10 @@ export class SiderBar extends React.Component {
                         allMenu.map(menu => {
                             if(menu.childrens && menu.childrens.length) {
                                 return (
-                                    <SubMenu key={Date.now() * Math.random()} title={<span><Icon type={ menu.icon } /><span>{ menu.name }</span></span>}>
+                                    <SubMenu key={menu.key} title={<span><Icon type={ menu.icon } /><span>{ menu.name }</span></span>}>
                                         {
                                             menu.childrens.map(child => (
-                                                <Menu.Item key={child.url}>
+                                                <Menu.Item key={child.key}>
                                                     <Link to={`/${child.url}`}>{ child.name }</Link>
                                                 </Menu.Item>
                                             ))
@@ -69,7 +69,7 @@ export class SiderBar extends React.Component {
                             }
 
                             return (
-                                <Menu.Item key={menu.url}>
+                                <Menu.Item key={menu.key}>
                                     <Link to={`/${menu.url}`}>
                                         <Icon type={ menu.icon } /><span>{ menu.name }</span>
                                     </Link>

@@ -4,26 +4,7 @@ import {
 import * as at from './actionTypes';
 
 const INIT_STATE = fromJS({
-    sites: [
-        {
-            url: 'wwww.baidu.com/wangpan',
-            status: 'not-sure',
-            id: `${Date.now() * Math.random()}`,
-            time: Date.now()
-        },
-        {
-            url: 'wwww.baidu.com/zhidao',
-            status: 'not-sure',
-            id: `${Date.now() * Math.random()}`,
-            time: Date.now()
-        },
-        {
-            url: 'wwww.baidu.com/music',
-            status: 'not-sure',
-            id: `${Date.now() * Math.random()}`,
-            time: Date.now()
-        },
-    ]
+    sites: []
 }); 
 
 /* eslint-disable no-mixed-operators */
