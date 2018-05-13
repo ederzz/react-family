@@ -29,6 +29,7 @@ class DataView extends React.Component {
 
     componentDidMount() {
         const { sites } = this.props.xssFinder.toJS();
+        /* eslint-disable no-mixed-operators */
         const dataSource = sites.map((site, index) => ({
             key: index,
             url: site.url,

@@ -51,6 +51,9 @@ export class XssIndex extends React.Component {
                 loading: true
             });
             this.timer = setInterval(() => {
+                if(this.state.percent === 100) {
+                    return ;
+                }
                 let newPercent = Math.floor(this.state.percent + Math.random() * 3 + 1);
                 newPercent = newPercent > 95 ? 95 : newPercent;
                 this.setState({
@@ -82,7 +85,7 @@ export class XssIndex extends React.Component {
                     hide: !this.state.loading
                 })}>
                     <Progress 
-                        width={700}
+                        className="progress-bar"
                         percent={this.state.percent} />
                 </div>
                 <div className="site-container">

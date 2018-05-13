@@ -2,8 +2,9 @@
 
 .xss-index {
     width: 100%;
-    background: linear-gradient(bottom right, #3C3B3F, #605C3C);
-    background: -webkit-linear-gradient(bottom right, #3C3B3F, #605C3C);
+    height: 100%;
+    background: linear-gradient(to bottom right, #3C3B3F, #605C3C);
+    background: -webkit-linear-gradient(to bottom right, #3C3B3F, #605C3C);
 
     .xss-icon {
         img {
@@ -101,7 +102,6 @@
     }
 
     .loading {
-        padding: 0 200px;
         transition: all 1s ease-in;
 
         &.visible {
@@ -114,6 +114,16 @@
             display: none;
             padding-top: 0;
             opacity: 0;
+        }
+
+        .progress-bar {
+            width: 700px;
+            margin: 0 auto;
+            display: block;
+
+            .ant-progress-text {
+                color: #fff;
+            }
         }
     }
     

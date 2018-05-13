@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Menu, Icon } from 'antd';
 import classnames from 'classnames';
@@ -8,11 +7,7 @@ import PropTypes from 'prop-types';
 import { menu as allMenu } from '../../constants';
 import './style.less';
 const SubMenu = Menu.SubMenu;
-// const MenuItemGroup = Menu.ItemGroup;
 
-const mapStateToProps = ({AppReducer}) => ({
-    AppReducer
-})
 
 export class SiderBar extends React.Component {
     static defaultProps = {
@@ -20,7 +15,6 @@ export class SiderBar extends React.Component {
     }
 
     static propTypes = {
-        AppReducer: PropTypes.object.isRequired,
         className: PropTypes.string,
         collapsed: PropTypes.bool.isRequired
     }
@@ -40,13 +34,8 @@ export class SiderBar extends React.Component {
         });
     }
 
-    // 待处理
-    handleClick = (e) => {
-        console.log('click ', e);
-    }
-
     render() {
-        const { AppReducer, className, collapsed } = this.props;
+        const { className, collapsed } = this.props;
 
         return (
             <div className={classnames("side-bar", className)}>
@@ -58,7 +47,6 @@ export class SiderBar extends React.Component {
                     /> */}
                 <Menu
                     theme={this.state.theme}
-                    onClick={this.handleClick}
                     defaultSelectedKeys={['1']}
                     defaultOpenKeys={['sub1']}
                     mode='inline'
@@ -68,7 +56,7 @@ export class SiderBar extends React.Component {
                         allMenu.map(menu => {
                             if(menu.childrens && menu.childrens.length) {
                                 return (
-                                    <SubMenu key={menu.url} title={<span><Icon type={ menu.icon } /><span>{ menu.name }</span></span>}>
+                                    <SubMenu key={Date.now() * Math.random()} title={<span><Icon type={ menu.icon } /><span>{ menu.name }</span></span>}>
                                         {
                                             menu.childrens.map(child => (
                                                 <Menu.Item key={child.url}>
@@ -94,4 +82,4 @@ export class SiderBar extends React.Component {
         );
     }
 }
-export default connect(mapStateToProps, null)(SiderBar)
+export default SiderBar

@@ -17,7 +17,7 @@ const XssHeader = ({
                     <a 
                         href='http://http://www.anquan.us/' 
                         target='_blank' 
-                        rel='noopener noreferer'
+                        rel='noopener noreferrer'
                         >for better internet.</a>
                 </div>
             </div>

@@ -57,6 +57,7 @@ export default class SiteBar extends React.Component {
                         show: request,
                         hide: !request
                     })} 
+                    alt="progress"
                     src={ loading ? load : done } 
                     />
                 <div className={classnames("site-bar", {

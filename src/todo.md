@@ -1,10 +1,5 @@
- - 每次接口调用完毕后，关闭浏览器实例   ------->done
- - 百分进度条延迟关闭 ------> done
  - 单个url检查后，更新redux
  - fix bug :1 (xss api返回无id值)
  - 点击输入框时，清空框内值
  - api端如果url出错，直接返回false
- - 检测完毕后图标颜色
- - 图表生成开关
- - 增加入场页面两个，入场动画和loading
- - 背景色 rgb(241, 241, 241)
+ - hash route cannot push the same route,默认路由

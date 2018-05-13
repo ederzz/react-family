@@ -26,6 +26,7 @@ const INIT_STATE = fromJS({
     ]
 }); 
 
+/* eslint-disable no-mixed-operators */
 export default (state = INIT_STATE, action) => {
     switch(action.type) {
         case at.FETCH_ALL_SITE:
