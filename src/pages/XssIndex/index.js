@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
+import { is, fromJS } from 'immutable'
 
 import XssHeader from './components/XssHeader'
 import SearchBar from './components/SearchBar'
@@ -24,28 +25,28 @@ export class XssIndex extends React.Component {
         percent: 0
     }
 
-    componentWillReceiveProps(nextProps) {
-        const {
-            sites
-        } = nextProps.xssFinder.toJS();
+    shouldComponentUpdate(nextProps, nextState) {
+        const nextSites = nextProps.xssFinder.toJS().sites
+        const { sites } = this.props.xssFinder.toJS()
+        return !is(fromJS(this.state), fromJS(nextState)) || !is(fromJS(sites), fromJS(nextSites))
+    }
 
-        if(sites) {
-            clearInterval(this.timer);
+    done = () => {
+        clearInterval(this.timer);
+        this.setState({
+            percent: 100
+        });
+
+        setTimeout(() => {
             this.setState({
-                percent: 100
+                loading: false
             });
-
-            setTimeout(() => {
-                this.setState({
-                    loading: false
-                });
-            }, 2000);
-        }
+        }, 2000);
     }
 
     handleSearch = e => {
         if(e.keyCode === 13) {
-            this.props.xssActions.fetchAllSites(e.target.value);
+            this.props.xssActions.fetchAllSites(e.target.value, this.done);
             this.setState({
                 percent: 0,
                 loading: true

@@ -36,15 +36,24 @@
 
     .footer-list-wrapper {
         display: flex;
-        display: flex;
-        justify-content: space-between;
 
-        .event-facts,
         .level-chart,
         .xss-nubmer-chart,
         .safe-site {
             width: 300px;
             height: 200px;
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .event-facts {
+            width: 270px;
+            height: 200px;
+            margin-right: 20px;
+        }
+
+        .safe-site {
+            margin-right: 0;
         }
 
     }

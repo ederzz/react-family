@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import WeaknessList from '../../containers/WeaknessList';
 import EventFacts from '../../components/EventFacts';
 import VisualHeader from './components/VisualHeader';
@@ -13,14 +15,41 @@ import {
 } from './config';
 import './style.less';
 
-export default class ChartsPage extends React.Component {
+export class ChartsPage extends React.Component {
+    static propTypes = {
+        xssFinder: PropTypes.object.isRequired
+    }
 
-    componentWillMount() {
-        console.log(this.props.location, this.props.history);
-        
+    _getLevelSites = sites => {
+        const levelSites = sites.reduce((level, site) => {
+            if(site.weakness === 1) {
+                level.low += 1
+            }
+            if(site.weakness === 2) {
+                level.medium += 1
+            }
+            if(site.weakness >= 3) {
+                level.high += 1
+            }
+            return level
+        }, {
+            high: 0,
+            medium: 0,
+            low: 0,
+        })
+    
+        return [
+            {value: levelSites.high, name:'高危站点'},
+            {value: levelSites.medium, name:'中危站点'},
+            {value: levelSites.low, name:'低危站点'}
+        ].filter(d => d.value)
     }
 
     render() {
+        const { sites } = this.props.xssFinder.toJS()
+        const levelSites = this._getLevelSites(sites)
+        console.log(levelSites)
+
         return (
             <div className="charts-page">
                 <VisualHeader 
@@ -43,20 +72,16 @@ export default class ChartsPage extends React.Component {
                     </div>
                 </section>
                 <section className="footer-list-wrapper">
-                    <div className="first-list footer-list">
                         <EventFacts 
                             title={eventFacts.title}
                             subTitle={eventFacts.subTitle}
                             facts={eventFacts.facts}
                             />
-                    </div>
-                    <div className="second-list footer-list">
                         <LevelPieChart 
                             className='level-chart'
                             title='威胁等级分布'
+                            data={levelSites}
                             />
-                    </div>
-                    <div className="third-list footer-list">
                         <XssNumber 
                             data={{
                                 axisData: ['site1', 'site1', 'site1', 'site1'],
@@ -64,15 +89,21 @@ export default class ChartsPage extends React.Component {
                             }}
                             className='xss-nubmer-chart'
                             />
-                    </div>
-                    <div className="fourth-list footer-list">
                         <ScrollTable 
                             className='safe-site'
                             title='安全站点'
                             />
-                    </div>
                 </section>
             </div>
         );
     }
 }
+
+export default connect(
+    ({
+        xssFinder
+    }) => ({
+        xssFinder
+    }),
+    null
+)(ChartsPage)

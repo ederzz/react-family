@@ -18,6 +18,7 @@ export default (state = INIT_STATE, action) => {
                     if(site.id === action.id) {
                         return Object.assign({}, site, {
                             status: action.data.weakness && 'danger' || 'safe',
+                            weakness: action.data.weakness,
                             updated: true
                         });
                     }
