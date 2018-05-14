@@ -73,9 +73,14 @@ export class XssIndex extends React.Component {
             sites
         } = this.props.xssFinder.toJS();
 
+        let completedStatus = false
+        if(sites && sites.length !== 0) {
+            completedStatus = sites.reduce((status, site) => status && site.updated, true)
+        }
+
         return (
             <div className="xss-index">
-                <XssHeader />
+                <XssHeader completedStatus={completedStatus}/>
                 <div className="xss-icon">
                     <img src={iconSrc} alt="xss" />
                 </div>

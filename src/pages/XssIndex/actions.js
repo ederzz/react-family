@@ -7,11 +7,12 @@ export const fetchAllSites = url => async dispatch => {
             requestUrl: url
         });
 
-        console.log(res.data);
-
         dispatch({
             type: at.FETCH_ALL_SITE,
-            data: res.data
+            data: res.data.map(d => {
+                d.updated = false
+                return d
+            })
         })
     } catch(e) {
         console.log(e.message);

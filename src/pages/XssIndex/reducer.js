@@ -17,7 +17,8 @@ export default (state = INIT_STATE, action) => {
                 state.toJS().sites.map(site => {
                     if(site.id === action.id) {
                         return Object.assign({}, site, {
-                            status: action.data.weakness && 'danger' || 'safe'
+                            status: action.data.weakness && 'danger' || 'safe',
+                            updated: true
                         });
                     }
                     return site;

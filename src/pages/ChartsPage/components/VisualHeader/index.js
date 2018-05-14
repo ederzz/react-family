@@ -1,9 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import moment from 'moment';
-import './style.less';
-import iconSrc from '../../static/dun.svg';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classnames from 'classnames'
+import moment from 'moment'
+import { Link } from 'react-router-dom'
+import './style.less'
+import iconSrc from '../../../../static/dun.svg'
 
 export default class VisualHeader extends React.Component {
 
@@ -57,7 +58,7 @@ export default class VisualHeader extends React.Component {
         return (
             <header className={classnames("header-bar", className)}>
                 <div className="header-title">
-                    <span className="title">{ title }</span>
+                    <Link to='/xssIndex' className="title">{ title }</Link>
                     <img 
                         className='visual-icon'
                         src={iconSrc} 
