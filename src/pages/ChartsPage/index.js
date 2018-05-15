@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { bindActionCreators } from 'redux'
 import WeaknessList from '../../containers/WeaknessList';
 import EventFacts from '../../components/EventFacts';
 import VisualHeader from './components/VisualHeader';
@@ -10,14 +11,22 @@ import ScrollTable from '../../components/ScrollTable';
 import LineChart from '../../components/LineChart';
 import {
     eventFacts,
-    weakness,
     header
 } from './config';
 import './style.less';
+import * as PlatformActions from './actions'
 
 export class ChartsPage extends React.Component {
     static propTypes = {
-        xssFinder: PropTypes.object.isRequired
+        xssFinder: PropTypes.object.isRequired,
+        visualPlatform: PropTypes.object.isRequired,
+        platformActions: PropTypes.object.isRequired,
+    }
+
+    componentDidMount() {
+        const { platformActions } = this.props
+        console.log(platformActions)
+        platformActions.getWeaknessList()
     }
 
     _getLevelSites = sites => {
@@ -45,10 +54,26 @@ export class ChartsPage extends React.Component {
         ].filter(d => d.value)
     }
 
+    _getXssNumber = sites => {
+        const xssSite = sites.filter(site => site.weakness)
+        return {
+            axisData: xssSite.map((site, i) => `site${i}(${site.url})`),
+            seriesData: xssSite.map(site => site.weakness)
+        }
+    }
+
+    _getLineChartData = sites => ({
+        axisData: sites.map((site, i) => `site${i}(${site.url})`),
+        seriesData: sites.map(site => site.weakness)
+    })
+
     render() {
+        const { filterWeaknessList } = this.props.platformActions
         const { sites } = this.props.xssFinder.toJS()
+        const { weaknessList } = this.props.visualPlatform.toJS()
         const levelSites = this._getLevelSites(sites)
-        console.log(levelSites)
+        const xssNumber = this._getXssNumber(sites)
+        const lineChartData = this._getLineChartData(sites)
 
         return (
             <div className="charts-page">
@@ -59,15 +84,14 @@ export class ChartsPage extends React.Component {
                     />
                 <section className="chart-wrapper">
                     <div className="mid-list">
-                        <WeaknessList xss={ weakness } />
+                        <WeaknessList 
+                            onSearch={ filterWeaknessList }
+                            xss={ weaknessList } />
                     </div>
                     <div className="mid-chart">
                         <LineChart 
                             className='threate-level'
-                            data={{
-                                axisData: ['site1(www.baidu.com)', 'site1(www.baidu.com)', 'site1(www.baidu.com)', 'site1(www.baidu.com)'],
-                                seriesData: [1, 2, 3, 4]
-                            }}
+                            data={lineChartData}
                             />
                     </div>
                 </section>
@@ -83,10 +107,7 @@ export class ChartsPage extends React.Component {
                             data={levelSites}
                             />
                         <XssNumber 
-                            data={{
-                                axisData: ['site1', 'site1', 'site1', 'site1'],
-                                seriesData: [11, 22, 31, 43]
-                            }}
+                            data={xssNumber}
                             className='xss-nubmer-chart'
                             />
                         <ScrollTable 
@@ -101,9 +122,13 @@ export class ChartsPage extends React.Component {
 
 export default connect(
     ({
-        xssFinder
+        xssFinder,
+        visualPlatform
     }) => ({
-        xssFinder
+        xssFinder,
+        visualPlatform
     }),
-    null
+    dispatch => ({
+        platformActions: bindActionCreators(PlatformActions, dispatch)
+    })
 )(ChartsPage)

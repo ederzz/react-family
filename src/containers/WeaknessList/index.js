@@ -12,20 +12,26 @@ export default class WeaknessList extends React.Component {
 
     static propTypes = {
         xss: PropTypes.array.isRequired,
-        className: PropTypes.string
+        className: PropTypes.string,
+        onSearch: PropTypes.func.isRequired
     }
 
     render() {
         const { 
             xss,
-            className
+            className,
+            onSearch
          } = this.props;
 
         return (
             <div className={ classnames("weakness-list", className) }>
                 <header className="list-title">案件列表</header>
                 <div className="search">
-                    <input className="ipt" type="text" placeholder="搜索xss" />
+                    <input 
+                        onKeyUp={e => { onSearch(e.target.value) }}
+                        className="ipt" 
+                        type="text" 
+                        placeholder="搜索xss" />
                 </div>
                 <section className="weakness-list-body">
                     {
@@ -33,7 +39,7 @@ export default class WeaknessList extends React.Component {
                             <WeaknessItem
                                 key={ Date.now() * Math.random() } 
                                 url={ item.url }
-                                count={ item.count }
+                                count={ item.weakness }
                                 time={ item.time }
                                 />
                         )
