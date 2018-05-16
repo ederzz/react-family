@@ -25,7 +25,7 @@ export default class WeaknessList extends React.Component {
 
         return (
             <div className={ classnames("weakness-list", className) }>
-                <header className="list-title">案件列表</header>
+                <header className="list-title">xss列表</header>
                 <div className="search">
                     <input 
                         onKeyUp={e => { onSearch(e.target.value) }}

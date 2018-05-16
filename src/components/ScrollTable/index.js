@@ -33,7 +33,8 @@ export default class ScrollTable extends React.Component {
     render() {
         const {
             title,
-            className
+            className,
+            data
         } = this.props;
 
         return (
@@ -43,14 +44,11 @@ export default class ScrollTable extends React.Component {
                     ref={ul => { this.list = ul }}
                     className="list-body"
                     >
-                    <li>111111111</li>
-                    <li>2222</li>
-                    <li>333</li>
-                    <li>444</li>
-                    <li>555</li>
-                    <li>666</li>
-                    <li>777</li>
-                    <li>888</li>
+                    {
+                        data.map(d => (
+                            <li key={`${Date.now() * Math.random()}`}>{d}</li>
+                        ))
+                    }
                 </ul>
             </div>
         );

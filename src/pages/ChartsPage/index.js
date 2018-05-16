@@ -67,6 +67,8 @@ export class ChartsPage extends React.Component {
         seriesData: sites.map(site => site.weakness)
     })
 
+    _getSafeData = sites => sites.filter(site => site.weakness === 0).map(site => site.url)
+
     render() {
         const { filterWeaknessList } = this.props.platformActions
         const { sites } = this.props.xssFinder.toJS()
@@ -74,6 +76,7 @@ export class ChartsPage extends React.Component {
         const levelSites = this._getLevelSites(sites)
         const xssNumber = this._getXssNumber(sites)
         const lineChartData = this._getLineChartData(sites)
+        const safeSites = this._getSafeData(sites)
 
         return (
             <div className="charts-page">
@@ -108,11 +111,13 @@ export class ChartsPage extends React.Component {
                             />
                         <XssNumber 
                             data={xssNumber}
+                            title='xss数量'
                             className='xss-nubmer-chart'
                             />
                         <ScrollTable 
                             className='safe-site'
                             title='安全站点'
+                            data={safeSites}
                             />
                 </section>
             </div>
