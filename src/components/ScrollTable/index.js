@@ -7,7 +7,7 @@ export default class ScrollTable extends React.Component {
 
     static defaultProps = {
         className: null,
-        title: '这是标题'
+        title: '这是标题',
     }
 
     static propTypes = {
@@ -16,12 +16,17 @@ export default class ScrollTable extends React.Component {
     }
 
     componentDidMount() {
-
+        const { length } = this.props.data
+        const limit = 150 - length * 37;
+        this.top = 0;
         this.timer = setInterval(() => {
-            if(this.list.scrollTop + this.list.clientHeight === this.list.scrollHeight) {
-                this.list.scrollTop = 0;
+            if(this.top === limit) {
+                this.list.style.top = '0px';
+                this.top = 0;
             } else {
-                this.list.scrollTop += 32;
+                this.top -= 37;
+                this.top = this.top < limit ? limit : this.top;
+                this.list.style.top = `${this.top}px`;
             }
         }, 2000);
     }
@@ -40,16 +45,18 @@ export default class ScrollTable extends React.Component {
         return (
             <div className={classnames("scroll-table", className)}>
                 <header className="list-title">{ title }</header>
+                <div className="hide-box">
                 <ul 
                     ref={ul => { this.list = ul }}
                     className="list-body"
                     >
                     {
                         data.map(d => (
-                            <li key={`${Date.now() * Math.random()}`}>{d}</li>
+                            <li title={d} key={`${Date.now() * Math.random()}`}>{d}</li>
                         ))
                     }
                 </ul>
+                </div>
             </div>
         );
     }

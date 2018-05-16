@@ -25,7 +25,6 @@ export class ChartsPage extends React.Component {
 
     componentDidMount() {
         const { platformActions } = this.props
-        console.log(platformActions)
         platformActions.getWeaknessList()
     }
 

@@ -13,22 +13,32 @@
         }
     }
 
-    .list-body {
+    .hide-box {
         height: calc(~'100% - 31px');
-        overflow: auto;
-        padding: 0;
-        transition: all 1.5s ease-in;
-        margin: 0;
+        overflow: hidden;
 
-        &::-webkit-scrollbar {
-            width: 0;
-        }
+        .list-body {
+            padding: 0;
+            transition: all .5s ease-in;
+            margin: 0;
+            position: relative;
 
-        li {
-            height: 32px;
-            list-style-type: none;
-            background: rgba(100, 127, 161, .3);
-            border-bottom: .5px solid rgba(145, 148, 152, 0.5);
+            &::-webkit-scrollbar {
+                width: 0;
+            }
+
+            li {
+                height: 32px;
+                list-style-type: none;
+                background: rgba(100, 127, 161, .3);
+                border-bottom: .5px solid rgba(145, 148, 152, 0.5);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                line-height: 32px;
+                padding: 0 6px;
+                margin-bottom: 5px;
+            }
         }
     }
 }

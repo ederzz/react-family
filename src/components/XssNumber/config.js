@@ -4,6 +4,22 @@ const option = {
         trigger: 'axis',
         axisPointer : {            // 坐标轴指示器，坐标轴触发有效
             type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        },
+        formatter: params => {
+            const [
+                data
+            ] = params;
+            const siteName = data.axisValue.match(/^[\s\S]+\(([\s\S]+)\)$/)[1];
+            return `
+                <div>
+                    <div>${siteName}</div>
+                    <div>
+                        ${data.marker}
+                        <span>xss数量：</span>
+                        <span>${data.value}</span>
+                    </div>
+                </div>
+            `
         }
     },
     grid: {

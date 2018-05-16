@@ -28,7 +28,6 @@ export const updateSiteStatus = (url, id) => async dispatch => {
         const res = await axios.post('http://localhost:3003/xssTest', {
             url
         });
-        console.log(res)
 
         dispatch({
             type: at.UPDATE_SITE_STATUS,
