@@ -101,8 +101,8 @@ export class XssIndex extends React.Component {
                                 key={site.id}
                                 status={site.status}
                                 url={site.url}
-                                handleClick={ () => {
-                                    xssActions.updateSiteStatus(site.url, site.id);
+                                handleClick={ done => {
+                                    xssActions.updateSiteStatus(site.url, site.id, done);
                                 } }
                                 />
                         ))

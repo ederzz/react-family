@@ -27,15 +27,10 @@ export default class SiteBar extends React.Component {
         };
     }
 
-    componentWillReceiveProps(nextProps) {
-        const {
-            status
-        } = nextProps;
-        if(status !== 'not-sure') {
-            this.setState({
-                loading: false
-            });
-        }
+    done = () => {
+        this.setState({
+            loading: false
+        });
     }
 
     render() {
@@ -78,9 +73,10 @@ export default class SiteBar extends React.Component {
                         className="check-bh"
                         onClick={() => {
                             this.setState({
-                                request: true
+                                request: true,
+                                loading: true
                             });
-                            handleClick();
+                            handleClick(this.done);
                         }}
                         >
                         <Icon type="search" />

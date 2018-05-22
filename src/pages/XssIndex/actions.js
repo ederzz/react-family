@@ -23,7 +23,7 @@ export const fetchAllSites = (url, done = () => {}) => async dispatch => {
     }
 }
 
-export const updateSiteStatus = (url, id) => async dispatch => {
+export const updateSiteStatus = (url, id, done = () => {}) => async dispatch => {
     try {
         const res = await axios.post('http://localhost:3003/xssTest', {
             url
@@ -37,4 +37,5 @@ export const updateSiteStatus = (url, id) => async dispatch => {
     } catch(e) {
         console.log(e.message);
     }
+    done();
 }

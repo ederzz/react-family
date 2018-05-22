@@ -3,3 +3,5 @@
  - 点击输入框时，清空框内值
  - api端如果url出错，直接返回false
  - hash route cannot push the same route,默认路由
+ -
+ - 扫描超过30s 删除功能 批量扫描功能
