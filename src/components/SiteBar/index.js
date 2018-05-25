@@ -16,7 +16,8 @@ export default class SiteBar extends React.Component {
     static propTypes = {
         className: PropTypes.string,
         url: PropTypes.string.isRequired,
-        handleClick: PropTypes.func.isRequired
+        handleClick: PropTypes.func.isRequired,
+        onDelete: PropTypes.func.isRequired
     }
 
     constructor() {
@@ -38,7 +39,8 @@ export default class SiteBar extends React.Component {
             className,
             url,
             status,
-            handleClick
+            handleClick,
+            onDelete
         } = this.props;
 
         const {
@@ -84,6 +86,7 @@ export default class SiteBar extends React.Component {
                     <div 
                         title='删除'
                         className="delete-bh"
+                        onClick={onDelete}
                         >
                         <Icon type="close" />
                     </div>

@@ -29,13 +29,39 @@ export const updateSiteStatus = (url, id, done = () => {}) => async dispatch => 
             url
         });
 
-        dispatch({
-            type: at.UPDATE_SITE_STATUS,
-            id,
-            data: res.data
-        });
+        if(res.data === false) {
+            dispatch({
+                type: at.SCAN_FAIL,
+                id,
+            });
+        } else {
+            dispatch({
+                type: at.UPDATE_SITE_STATUS,
+                id,
+                data: res.data
+            });
+        }
     } catch(e) {
         console.log(e.message);
     }
     done();
+}
+
+export const deleteSite = (id, done=() => {}) => async dispatch => {
+    try {
+        await axios.delete('http://localhost:3003/xssData', {
+            params: {
+                id
+            }
+        })  
+        
+        dispatch({
+            type: at.DELETE_SITE,
+            id
+        })
+        done()
+    } catch (error) {
+        done(error)
+        console.log(error.message)
+    }
 }

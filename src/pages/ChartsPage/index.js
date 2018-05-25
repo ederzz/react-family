@@ -47,9 +47,9 @@ export class ChartsPage extends React.Component {
         })
     
         return [
-            {value: levelSites.high, name:'高危站点'},
-            {value: levelSites.medium, name:'中危站点'},
-            {value: levelSites.low, name:'低危站点'}
+            {value: levelSites.high, name:'高危页面'},
+            {value: levelSites.medium, name:'中危页面'},
+            {value: levelSites.low, name:'低危页面'}
         ].filter(d => d.value)
     }
 

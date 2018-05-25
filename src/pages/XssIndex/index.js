@@ -1,5 +1,5 @@
 import React from 'react'
-import { Progress } from 'antd'
+import { Progress, message } from 'antd'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -29,6 +29,14 @@ export class XssIndex extends React.Component {
         const nextSites = nextProps.xssFinder.toJS().sites
         const { sites } = this.props.xssFinder.toJS()
         return !is(fromJS(this.state), fromJS(nextState)) || !is(fromJS(sites), fromJS(nextSites))
+    }
+
+    _delete = error => {
+        if(error) {
+            message.error('删除失败')
+        } else {
+            message.success('删除成功')
+        }
     }
 
     done = () => {
@@ -90,6 +98,7 @@ export class XssIndex extends React.Component {
                     visible: this.state.loading,
                     hide: !this.state.loading
                 })}>
+                    <span className="progress-title">站点链接挖掘中</span>
                     <Progress 
                         className="progress-bar"
                         percent={this.state.percent} />
@@ -103,6 +112,9 @@ export class XssIndex extends React.Component {
                                 url={site.url}
                                 handleClick={ done => {
                                     xssActions.updateSiteStatus(site.url, site.id, done);
+                                } }
+                                onDelete={ () => {
+                                        xssActions.deleteSite(site.id, this._delete);
                                 } }
                                 />
                         ))

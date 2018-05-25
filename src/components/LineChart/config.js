@@ -108,6 +108,9 @@ const options = {
             lineStyle: {
                 color: '#fff'
             }
+        },
+        lineStyle: {
+            smooth: true
         }
     }
 }
