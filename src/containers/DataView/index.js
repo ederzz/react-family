@@ -14,8 +14,6 @@ import { columns } from './template';
 import { tsSiteStatus } from '../../utils';
 import './style.less';
 
-console.log(process)
-
 const mapStateToProps = ({ xssFinder }) => ({ xssFinder });
 
 /**最后主动注入后台数据进去 */

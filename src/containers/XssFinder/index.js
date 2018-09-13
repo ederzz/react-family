@@ -112,6 +112,7 @@ class XssFinder extends React.Component {
                                 key={site.id}
                                 status={site.status}
                                 url={site.url}
+                                onDelete={ () => {} }
                                 handleClick={ () => {
                                     xssActions.updateSiteStatus(site.url, site.id);
                                 } }

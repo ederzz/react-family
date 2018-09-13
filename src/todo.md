@@ -1,7 +1,7 @@
- - 单个url检查后，更新redux
- - fix bug :1 (xss api返回无id值)
  - 点击输入框时，清空框内值
  - api端如果url出错，直接返回false
- - hash route cannot push the same route,默认路由
- -
- - 扫描超过30s 删除功能 批量扫描功能
+ - 给xss平台添加默认搜索链接
+ - 添加form等使用
+ - google末尾白色模糊效果
+ - antd使用晦涩难点
+ - 清除input下拉默认值
