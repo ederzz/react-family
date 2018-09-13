@@ -18,6 +18,12 @@ export const menu = [
         icon: 'pie-chart'
     },
     {
+        name: '表单',
+        url: 'form',
+        key: 'form',
+        icon: 'form'
+    },
+    {
         name: 'taste demos',
         icon: 'rocket',   // 没有icon
         key: 'demos',

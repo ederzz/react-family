@@ -56,12 +56,13 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "start": "react-app-rewired start",
+    "start": "cross-env NODE_ENV=development react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom"
   },
   "devDependencies": {
     "babel-plugin-import": "^1.6.3",
+    "cross-env": "^5.2.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",

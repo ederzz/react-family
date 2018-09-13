@@ -3,11 +3,11 @@ import React from 'react'
 import { HashRouter } from 'react-router-dom'
 import { Switch, Route } from 'react-router'
 
-import App from './containers/App';
-import ChartsPage from './pages/ChartsPage';
-import XssIndex from './pages/XssIndex';
-import DataAnalysis from './containers/DataAnalysis';
-import ScrollTable from './components/ScrollTable';
+import App from './containers/App'
+import ChartsPage from './pages/ChartsPage'
+import XssIndex from './pages/XssIndex'
+import DataAnalysis from './containers/DataAnalysis'
+import ScrollTable from './components/ScrollTable'
 
 const routes = (
     <HashRouter>

@@ -6,6 +6,7 @@ import './style.less'
 const SearchBar = ({ onSearch }) => (
                     <div className="search-wrap">
                         <input 
+                            value="https://shenyiling.github.io/skills-demo/xss-example"
                             type="text"
                             onKeyDown={onSearch}
                             />    

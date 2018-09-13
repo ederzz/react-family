@@ -1,21 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { 
     Route,
     Link
- } from 'react-router-dom';
+ } from 'react-router-dom'
 import {
     Icon,
     Layout
-} from 'antd';
-import classnames from 'classnames';
-import SiderBar from '../../components/SiderBar';
-import './style.less'
+} from 'antd'
+import classnames from 'classnames'
 
-import Home from '../Home';
-import XssFinder from '../XssFinder';
-import DataView from '../DataView';
-import iconSrc from '../../static/dun.svg';
-import HoverAnimation from '../../components/HoverAnimation';
+import Home from '../Home'
+import XssFinder from '../XssFinder'
+import DataView from '../DataView'
+import Form from '../Form'
+import HoverAnimation from '../../components/HoverAnimation'
+import SiderBar from '../../components/SiderBar'
+import iconSrc from '../../static/dun.svg'
+import './style.less'
 
 const {
     Header,
@@ -73,7 +74,7 @@ export default class App extends Component {
                                 style={{ lineHeight: '64px' }}
                                 />
                             <div className="entry">
-                                <Link to="/view">Xss Platform</Link>
+                                <Link to="/xssIndex">Xss Platform</Link>
                             </div>
                         </Header>
                         <Content className="app-content">
@@ -81,6 +82,7 @@ export default class App extends Component {
                             <Route path='/xss' component={ XssFinder } exact={true} />
                             <Route path='/chart' component={ DataView } exact={true} />
                             <Route path='/hover' component={ HoverAnimation } exact={true} />
+                            <Route path='/form' component={ Form } exact={true} />
                         </Content>
                     </Layout>
                 </Layout>

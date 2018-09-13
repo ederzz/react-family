@@ -10,7 +10,7 @@ const XssHeader = ({
 }) => (
         <header className={classnames('xss-topbar', className)}>
             <div className='topbar-title'>
-                <span className="sub-title">INDEX</span>
+                <span className="sub-title"><Link className="visual" to='/'>INDEX</Link></span>
                 <span className="title">XSS漏洞检测器</span>
             </div>
             <div className='topbar-share'>
