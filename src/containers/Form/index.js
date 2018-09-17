@@ -2,12 +2,21 @@ import React from 'react'
 import {
     Form,
     Input,
+    InputNumber,
     Button,
     Select,
     DatePicker,
     Radio,
-    Table
+    Table,
+    Rate,
+    Row,
+    Col,
+    Modal
 } from 'antd'
+import { connect } from 'react-redux'
+import moment from 'moment'
+
+import ModalTable from '../../components/ModalTable'
 
 import './index.less'
 
@@ -29,9 +38,20 @@ export class ComplexForm extends React.PureComponent {
         const { form } = this.props
         const values = form.getFieldsValue()
         console.log(values)
+        form.validateFieldsAndScroll({ first: true }, (errors, values) => {
+            console.log(errors, values)
+        })
     }
 
     _cancel = () => {}
+
+    _validateDeveloperNumber = (_, value, callback) => {
+        if (value > 6) {
+            callback('开发人数必须小于6人')
+            return
+        }
+        callback()
+    }
 
     render() {
         const columns = [{
@@ -46,64 +66,104 @@ export class ComplexForm extends React.PureComponent {
         }]
 
         const data = []
-        for (let i = 0; i < 46; i++) {
-            data.push({
-              key: i,
-              name: `Edward King ${i}`,
-              age: 32,
-              address: `London, Park Lane no. ${i}`,
-            })
-        }
-
 
         const {
             getFieldDecorator
         } = this.props.form
+
+        const {
+            formData
+        } = this.props
+        console.log(formData.toJS(), '=====')
+        const {
+            difficulty,
+            developNumber,
+            developFramework,
+            projectCycleType,
+            projectName,
+            specificDate
+        } = formData.toJS()
 
         return (
             <div className="form__container">
                 <form className="form">
                     <FormItem
                         {...formItemLayout}
-                        label="input"
+                        label="项目名称"
                         className="form__item"
                         >
-                        {getFieldDecorator('input', {
-                                rules: [{ required: true, message: 'input is required!' }],
-                            })(<Input />)
+                        {getFieldDecorator('name', {
+                                rules: [{ required: true, message: '请输入项目名称!' }]
+                            })(<Input 
+                                style={{
+                                    width: '300px'
+                                }}
+                                placeholder="请输入项目名称"
+                                />)
                         }
                     </FormItem>
                     <FormItem
                         {...formItemLayout}
-                        label="input number"
+                        label="开发人数"
                         className="form__item"
                         >
-                        {getFieldDecorator('inputNumber', {
-                                rules: [{ required: true, message: 'input number is required!' }],
-                            })(<Input />)
+                        {getFieldDecorator('developerNumber', {
+                                rules: [{ 
+                                    required: true, 
+                                    message: '请输入开发人数!' 
+                                }, {
+                                    validator: this._validateDeveloperNumber
+                                }],
+                            })(<InputNumber 
+                                precision={0}
+                                min={0}
+                                />)
                         }
                     </FormItem>
                     <FormItem
                         {...formItemLayout}
-                        label="rangeDate"
+                        label="项目周期"
                         className="form__item"
                         >
-                        {getFieldDecorator('rangeDate', {
-                                rules: [{ required: true, message: 'range date is required!' }],
-                            })(<RangePicker />)
+                        {getFieldDecorator('projectCycle', {
+                                rules: [{ required: true, message: '请选择项目周期' }]
+                            })(<RadioGroup>
+                                <Radio value={1}>
+                                    {
+                                        getFieldDecorator('dateNumber', {})(
+                                            <InputNumber 
+                                                precision={0}
+                                                min={0}
+                                                style={{
+                                                    width: '70px'
+                                                }} /> 
+                                        )
+                                    } 天之内
+                                </Radio>
+                                <Radio value={2}>
+                                    特定时间 {
+                                        getFieldDecorator('specificDate', {})(
+                                            <RangePicker 
+                                                placeholder={['开始时间', '结束时间']}
+                                                />
+                                        )
+                                    }
+                                </Radio>
+                              </RadioGroup>
+                            )
                         }
                     </FormItem>
                     <FormItem
                         {...formItemLayout}
-                        label="select"
+                        label="开发框架"
                         className="form__item"
                         >
-                        {getFieldDecorator('slect', {
-                                rules: [{ required: true, message: 'select is required!' }],
-                            })(<Select defaultValue="lucy" style={{ width: 120 }}>
-                                    <Option value="jack">Jack</Option>
-                                    <Option value="lucy">Lucy</Option>
-                                    <Option value="tom">Tom</Option>
+                        {getFieldDecorator('framework', {
+                                rules: [{ required: true, message: '请选择开发框架' }],
+                            })(<Select style={{ width: 120 }}>
+                                    <Option value="react">React</Option>
+                                    <Option value="vue">Vue</Option>
+                                    <Option value="angular">Angular</Option>
                                     <Option value="disabled" disabled>Disabled</Option>
                                 </Select>
                             )
@@ -111,47 +171,95 @@ export class ComplexForm extends React.PureComponent {
                     </FormItem>
                     <FormItem
                         {...formItemLayout}
-                        label="radio group"
+                        label="项目难度"
                         className="form__item"
                         >
-                        {getFieldDecorator('radioGroup', {
-                                rules: [{ required: true, message: 'radio is required!' }],
-                            })(<RadioGroup value={1}>
-                                <Radio value={1}>A</Radio>
-                                <Radio value={2}>B</Radio>
-                                <Radio value={3}>C</Radio>
-                                <Radio value={4}>D</Radio>
-                              </RadioGroup>
-                            )
-                        }
+                        {getFieldDecorator('rate', {
+                            rules: [{
+                                required: true, message: '必须选择'
+                            }]
+                        })(
+                            <Rate />
+                        )}
                     </FormItem>
                     <FormItem
                         {...formItemLayout}
-                        label="select table data"
+                        label="项目开发依赖"
                         className="form__item"
                         >
                         {getFieldDecorator('selectTableData', {
                                 rules: [{ required: true, message: 'select table data is required!' }],
-                            })(<Table 
-                                columns={columns} 
-                                dataSource={data} 
-                                />)
+                            })(<div>
+                                    <Button type="primary">+ 添加</Button>
+                                    <Table 
+                                    columns={columns} 
+                                    dataSource={data} 
+                                    />
+                                </div>)
                         }
                     </FormItem>
                 </form>
-                <div className="actions">
-                    <Button 
-                        onClick={this._submit} 
-                        type="primary"
-                        style={{
-                            marginRight: '55px'
-                        }}
-                        >提交</Button> 
-                    <Button onClick={this._cancel}>取消</Button>
-                </div>
+                <Row>
+                    <Col span={3}></Col>
+                    <Col span={10}>
+                        <div className="actions">
+                            <Button 
+                                onClick={this._submit} 
+                                type="primary"
+                                style={{
+                                    marginRight: '55px'
+                                }}
+                                >提交</Button> 
+                            <Button onClick={this._cancel}>取消</Button>
+                        </div>
+                    </Col>
+                </Row>
             </div>
         )
     }
 }
 
-export default Form.create()(ComplexForm)
+const insertDataForm = Form.create({
+    mapPropsToFields({ formData = {} }) {
+        const { 
+            projectName,
+            developerNumber,
+            projectCycleType,
+            developFramework,
+            difficulty,
+            dateNumber,
+            specificDate
+        } = formData.toJS()
+        console.log(projectCycleType)
+
+        return {
+            name: Form.createFormField({
+                value: projectName
+            }),
+            developerNumber: Form.createFormField({
+                value: developerNumber
+            }),
+            projectCycle: Form.createFormField({
+                value: projectCycleType
+            }),
+            framework: Form.createFormField({
+                value: developFramework
+            }),
+            rate: Form.createFormField({
+                value: difficulty
+            }),
+            dateNumber: Form.createFormField({
+                value: dateNumber
+            }),
+            specificDate: Form.createFormField({
+                value: specificDate.map(current => moment(current))
+            })
+        }
+    }
+})(ComplexForm)
+
+export default connect(({
+    formData
+}) => ({
+    formData
+}), () => {})(insertDataForm)
