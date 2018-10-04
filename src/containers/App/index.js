@@ -8,6 +8,7 @@ import {
     Layout
 } from 'antd'
 import classnames from 'classnames'
+import ReactAplayer from 'react-aplayer'
 
 import Home from '../Home'
 import XssFinder from '../XssFinder'
@@ -32,6 +33,19 @@ export default class App extends Component {
         }
     }
 
+    onPlay = () => {
+        console.log('on play')
+    }
+
+    onPause = () => {
+        console.log('on pause')
+    }
+
+    // example of access aplayer instance
+    onInit = ap => {
+        this.ap = ap
+    }
+
     toggle = () => {
         if(this.state.collapsed) {
             this.setState({
@@ -49,9 +63,34 @@ export default class App extends Component {
             collapsed
         } = this.state;
 
+        const props = {
+            theme: '#F57F17',
+            lrcType: 3,
+            fixed: true,
+            mini: true,
+            listFolded: true, // 播放列表折叠
+            audio: [
+                {
+                    name: '光るなら',
+                    artist: 'Goose house',
+                    url: 'https://moeplayer.b0.upaiyun.com/aplayer/hikarunara.mp3',
+                    cover: 'https://moeplayer.b0.upaiyun.com/aplayer/hikarunara.jpg',
+                    lrc: 'https://moeplayer.b0.upaiyun.com/aplayer/hikarunara.lrc',
+                    theme: '#ebd0c2'
+                },
+                {
+                    name: '光なら',
+                    artist: 'Goose house',
+                    url: 'https://moeplayer.b0.upaiyun.com/aplayer/hikarunara.mp3',
+                    cover: 'https://moeplayer.b0.upaiyun.com/aplayer/hikarunara.jpg',
+                    lrc: 'https://moeplayer.b0.upaiyun.com/aplayer/hikarunara.lrc',
+                    theme: '#ebd0c2'
+                },
+            ]
+        }
+
         return (
             <div className="app">
-
                 <Layout>
                     <Sider collapsed={collapsed}>
                         <img
@@ -84,6 +123,12 @@ export default class App extends Component {
                             <Route path='/hover' component={ HoverAnimation } exact={true} />
                             <Route path='/form' component={ Form } exact={true} />
                         </Content>
+                        <ReactAplayer
+                            {...props}
+                            onInit={this.onInit}
+                            onPlay={this.onPlay}
+                            onPause={this.onPause}
+                            />
                     </Layout>
                 </Layout>
             </div>
