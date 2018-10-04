@@ -8,6 +8,11 @@ const INIT_STATE = fromJS({
     dateNumber: 6,
     developFramework: 'react',
     difficulty: 4,
+    customProjectCycle: {
+        radioVal: undefined,
+        specificDate: undefined,
+        rangeDate: undefined
+    }
 })
 
 export default (state = INIT_STATE, action) => {

@@ -11,12 +11,13 @@ import {
     Rate,
     Row,
     Col,
-    Modal
+    // Modal
 } from 'antd'
 import { connect } from 'react-redux'
 import moment from 'moment'
 
-import ModalTable from '../../components/ModalTable'
+// import ModalTable from '../../components/ModalTable'
+import SelectDate from '../../components/SelectDate'
 
 import './index.less'
 
@@ -39,7 +40,11 @@ export class ComplexForm extends React.PureComponent {
         const values = form.getFieldsValue()
         console.log(values)
         form.validateFieldsAndScroll({ first: true }, (errors, values) => {
-            console.log(errors, values)
+            if (errors) {
+                console.log('表单域验证失败')
+            } else {
+                console.log(values, '表单域值')
+            }
         })
     }
 
@@ -51,6 +56,30 @@ export class ComplexForm extends React.PureComponent {
             return
         }
         callback()
+    }
+
+    _validateCustomSelectDate = (_, val, callback) => {
+        const {
+            radioVal = undefined,
+            specificDate = undefined,
+            rangeDate = undefined
+        } = val
+
+        if (!radioVal) {
+            callback('请选择项目周期类型')
+            return
+        }
+        if (radioVal === 1 && typeof specificDate !== 'number') {
+            callback('请输入项目周期在几天之内')
+            return
+        }
+        if (radioVal === 2) {
+            if (!Array.isArray(rangeDate) || !rangeDate[0] || !rangeDate[1]) {
+                callback('请选择特定项目周期')
+                return
+            }
+            callback()
+        }
     }
 
     render() {
@@ -70,19 +99,6 @@ export class ComplexForm extends React.PureComponent {
         const {
             getFieldDecorator
         } = this.props.form
-
-        const {
-            formData
-        } = this.props
-        console.log(formData.toJS(), '=====')
-        const {
-            difficulty,
-            developNumber,
-            developFramework,
-            projectCycleType,
-            projectName,
-            specificDate
-        } = formData.toJS()
 
         return (
             <div className="form__container">
@@ -150,6 +166,18 @@ export class ComplexForm extends React.PureComponent {
                                     }
                                 </Radio>
                               </RadioGroup>
+                            )
+                        }
+                    </FormItem>
+                    <FormItem
+                        required
+                        {...formItemLayout}
+                        label="项目周期"
+                        className="form__item"
+                        >
+                        {getFieldDecorator('customProjectCycle', {
+                                rules: [{ validator: this._validateCustomSelectDate }]
+                            })(<SelectDate />
                             )
                         }
                     </FormItem>
@@ -228,9 +256,9 @@ const insertDataForm = Form.create({
             developFramework,
             difficulty,
             dateNumber,
-            specificDate
+            specificDate,
+            customProjectCycle
         } = formData.toJS()
-        console.log(projectCycleType)
 
         return {
             name: Form.createFormField({
@@ -253,6 +281,9 @@ const insertDataForm = Form.create({
             }),
             specificDate: Form.createFormField({
                 value: specificDate.map(current => moment(current))
+            }),
+            customProjectCycle: Form.createFormField({
+                value: customProjectCycle
             })
         }
     }
@@ -262,4 +293,4 @@ export default connect(({
     formData
 }) => ({
     formData
-}), () => {})(insertDataForm)
+}), () => ({}))(insertDataForm)
