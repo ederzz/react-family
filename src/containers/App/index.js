@@ -8,7 +8,7 @@ import {
     Layout
 } from 'antd'
 import classnames from 'classnames'
-import ReactAplayer from 'react-aplayer'
+// import ReactAplayer from 'react-aplayer'
 
 import Home from '../Home'
 import XssFinder from '../XssFinder'
@@ -123,12 +123,12 @@ export default class App extends Component {
                             <Route path='/hover' component={ HoverAnimation } exact={true} />
                             <Route path='/form' component={ Form } exact={true} />
                         </Content>
-                        <ReactAplayer
+                        {/* <ReactAplayer
                             {...props}
                             onInit={this.onInit}
                             onPlay={this.onPlay}
                             onPause={this.onPause}
-                            />
+                            /> */}
                     </Layout>
                 </Layout>
             </div>
